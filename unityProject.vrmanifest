@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.staircase.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\vrlab\\Documents\\Matt\\unity-20210730T040559Z-001\\unity\\staircase\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "staircase [Testing]"
+        }
+      }
+    }
+  ]
+}
