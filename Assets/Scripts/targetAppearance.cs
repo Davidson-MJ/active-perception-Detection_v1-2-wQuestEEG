@@ -191,7 +191,7 @@ public class targetAppearance : MonoBehaviour
 
 
                     // to increase difficulty, and remove expectancy, only show on the % of trials.
-                    if (Random.value <= .95f) // proportion to show targets (now have jitter also).
+                    if (Random.value <= .9f) // proportion to show targets (now have jitter also).
                     {
 
                         

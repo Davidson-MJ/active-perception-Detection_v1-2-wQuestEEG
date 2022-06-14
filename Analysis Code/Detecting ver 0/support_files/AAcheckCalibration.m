@@ -20,7 +20,7 @@ disp(tr)
 
 %
 %% Per csv file, import and wrangle into Matlab Structures, and data matrices:
-for ippant =2:length(pfols)
+for ippant =1%:length(pfols)
   
 cd(datadir)
 pfols = dir([pwd filesep '*trialsummary.csv']);

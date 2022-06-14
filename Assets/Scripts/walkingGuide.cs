@@ -73,7 +73,8 @@ public class walkingGuide : MonoBehaviour
 
             if (walkMotion == motion.start) // update sesssion flow:
             {
-               
+                // reset height for screen
+                walkParameters.updateReachHeight(); 
 
                 flipDirection = !flipDirection;
                 tDelta = 0;
@@ -215,6 +216,7 @@ public class walkingGuide : MonoBehaviour
 
     public void fillStartPos()
     {
+        // 
         walkParameters.updateReachHeight();
 
         // fill the above 3D pos. (based on coords in world space).

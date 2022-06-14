@@ -48,11 +48,12 @@ public class walkParameters : MonoBehaviour
     public float passiveTaskDistance;
 
     GameObject motionPath;
-
+    GameObject hmd;
     // set all variables at Awake, to set variables at initialization.
     // That way, these fields will be available in other scripts Start () calls
     void Start()
     {
+        reachHeight = 1.5f;
         walkDuration = 9f;// 
         walkingPathDistance = 9.5f;//  Determines end point. 
 
@@ -83,11 +84,19 @@ public class walkParameters : MonoBehaviour
 
         motionPath = GameObject.Find("motionPath");
 
+        hmd = GameObject.Find("VRCamera");
+        
     }
-    
+
     // METHODS:
     public void updateReachHeight()
     {
+
+        Vector3 headPosition = hmd.transform.position;
+        //headPosition.y = Round(headPosition.y, 1);
+        reachHeight = hmd.transform.position.y * reachBelowPcnt;
+         
+
         Vector3 currentPos = motionPath.transform.localPosition;
         //note that reachHeight is updated in runExperiment, based on hmd position.
         Vector3 updatePosition = new Vector3(currentPos.x, reachHeight, currentPos.z);

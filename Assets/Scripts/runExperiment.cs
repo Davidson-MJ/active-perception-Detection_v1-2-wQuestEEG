@@ -63,7 +63,7 @@ public class runExperiment : MonoBehaviour
     showText showText;
     changeDirectionMaterial changeMat;
     targetAppearance targetAppearance;
-
+    myMathsMethods myMathsMethods;
 
 
     // declare public GObjs.
@@ -93,7 +93,7 @@ public class runExperiment : MonoBehaviour
         targetAppearance = GameObject.Find("TargetCylinder").GetComponent<targetAppearance>();
         randomWalk = GameObject.Find("TargetCylinder").GetComponent<randomWalk>();
         walkingGuide = GameObject.Find("motionPath").GetComponent<walkingGuide>();
-
+        
         viveInput = GetComponent<ViveInput>();
         recordData = GetComponent<recordData>();
         walkParams = GetComponent<walkParameters>();        
@@ -101,11 +101,13 @@ public class runExperiment : MonoBehaviour
         questP = GetComponent<QuestParam>();
         questStair1 = GetComponent<QuestStaircase>();
         questStair2 = GetComponent<QuestStaircase>();
-        questStair3 = GetComponent<QuestStaircase>();
+        myMathsMethods = GetComponent<myMathsMethods>();
+
 
         showText = GameObject.Find("Instructions (TMP)").GetComponent<showText>();
         changeMat = GameObject.Find("directionCanvas").GetComponent<changeDirectionMaterial>();
-         redX = GameObject.Find("RedX");
+        redX = GameObject.Find("RedX");
+
         // params, storage
         // make sure nAllTrials is divisible by 10.
         
@@ -319,7 +321,7 @@ public class runExperiment : MonoBehaviour
         if (questready) // this just omits this calibration, on the first frame of the experiment.
         {
             Vector3 headPosition = hmd.transform.position;
-            headPosition.y = Round(headPosition.y, 1);
+            headPosition.y = myMathsMethods.Round(headPosition.y, 1);
             walkParams.reachHeight = hmd.transform.position.y * walkParams.reachBelowPcnt;
             walkParams.updateReachHeight(); // 
         }
@@ -364,7 +366,7 @@ public class runExperiment : MonoBehaviour
 
         // TO DO: toggle these so that walk height is fixed after trial packdown.
         Vector3 headPosition = hmd.transform.position;
-        headPosition.y = Round(headPosition.y, 1);
+        headPosition.y = myMathsMethods.Round(headPosition.y, 1);
         walkParams.reachHeight = hmd.transform.position.y * walkParams.reachBelowPcnt;
         walkParams.updateReachHeight(); // 
 
@@ -648,7 +650,7 @@ public class runExperiment : MonoBehaviour
                     // or just use the resultant output, to define range (one staircase).
                    
                         tmpQav = (float)questStair1.Mean();
-                        uselow = (float)questStair1.Quantile(.25);
+                        uselow = (float)questStair1.Quantile(.15); // increased spread from 0.25
                    
                 }
 
@@ -665,8 +667,8 @@ public class runExperiment : MonoBehaviour
                 usehigh = tmpQav + tdiff;
 
                 // now define range for subsequent trials"
-                float[] lrange = LINSPACE(uselow, tmpQav, 3);
-                float[] urange = LINSPACE(tmpQav, usehigh, 3);
+                float[] lrange = myMathsMethods.Linspace(uselow, tmpQav, 3);
+                float[] urange = myMathsMethods.Linspace(tmpQav, usehigh, 3);
                 //add upper quantile to array
 
                 trialParams.myCalibContrast[0] = lrange[0]; // lower
@@ -685,6 +687,8 @@ public class runExperiment : MonoBehaviour
                 print("staircase over: calibrated contrast [4]" + trialParams.myCalibContrast[4]);
                 print("staircase over: calibrated contrast [5]" + trialParams.myCalibContrast[5]);
                 print("staircase over: calibrated contrast [6]" + trialParams.myCalibContrast[6]);
+
+                expContrastset = true;
             }
             else if (!expContrastset && trialParams.nStaircaseBlocks == 0)
             {
@@ -699,7 +703,13 @@ public class runExperiment : MonoBehaviour
                 print("skipping staircase: calibrated contrast [4]" + trialParams.myCalibContrast[4]);
                 print("skipping staircase: calibrated contrast [5]" + trialParams.myCalibContrast[5]);
                 print("skipping staircase: calibrated contrast [6]" + trialParams.myCalibContrast[6]);
+                expContrastset = true;
             }
+            // select from the range specified above
+            int randomIndex;
+            randomIndex = Random.Range(0, 7); // min-max exclusive.
+            tmpQ = trialParams.myCalibContrast[randomIndex];
+            print("next contr pos: " + randomIndex);
         }
         }
 
@@ -805,35 +815,6 @@ public class runExperiment : MonoBehaviour
         redX.SetActive(true);
     }
 
-    public static float Round(float value, int digit)
-    {
-        float multi = Mathf.Pow(10.0f, (float)digit);
-        return Mathf.Round(value * multi) / multi;
-    }
-    static float[] LINSPACE(float StartValue, float EndValue, int numberofpoints)
-    {
-
-        float[] parameterVals = new float[numberofpoints];
-        float increment = Mathf.Abs(StartValue - EndValue) / (float)(numberofpoints );
-        int j = 0; //will keep a track of the numbers 
-        float nextValue = StartValue;
-        for (int i = 0; i < numberofpoints; i++)
-        {
-
-
-            parameterVals[i]= nextValue;
-            j++;
-            if (j > numberofpoints)
-            {
-                //throw new IndexOutOfRangeException();
-            }
-            nextValue = nextValue + increment;
-        }
-        return parameterVals;
-
-
-
-    }
 
 }
 

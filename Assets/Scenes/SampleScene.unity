@@ -4963,7 +4963,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798776873}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 7.2, y: 2, z: 0.53}
+  m_LocalPosition: {x: 8, y: 2, z: 0.53}
   m_LocalScale: {x: 0.1, y: 2, z: 0.1}
   m_Children:
   - {fileID: 1643755912}
@@ -14862,6 +14862,7 @@ GameObject:
   - component: {fileID: 1896417868}
   - component: {fileID: 1896417873}
   - component: {fileID: 1896417872}
+  - component: {fileID: 1896417874}
   m_Layer: 0
   m_Name: scriptHolder
   m_TagString: Untagged
@@ -14881,7 +14882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1ee09535d8d81438bf87e9b2bbfcd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  participant: test
+  participant: MD2
   TrialCount: 0
   TrialType: 0
   targCount: 0
@@ -14998,7 +14999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f4d57c76bfcdd489099d1b9ab257cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reachHeight: 1.5
+  reachHeight: 0
   walkingPathDistance: 0
   walkingSpeed: 0
   walkDuration: 0
@@ -15091,6 +15092,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tGuess: 0
+--- !u!114 &1896417874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896417864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258971924e27b5c468eeafcf41ae6a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1898746583
 PrefabInstance:
   m_ObjectHideFlags: 0
