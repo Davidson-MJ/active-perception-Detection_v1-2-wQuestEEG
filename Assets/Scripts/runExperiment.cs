@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Collections;
 using UnityEngine.InputSystem;
+using LSL;
 
 /// <summary>
 ///  Single target detection, quest staircase, jittered onset and contrast.
 ///  
-///  v1_2                UPDATED for EEG
+///  v1_2 --------------- UPDATED for EEG and lab streaming layer
 /// 
 /// </summary>
 public class runExperiment : MonoBehaviour
@@ -17,13 +18,13 @@ public class runExperiment : MonoBehaviour
     /// Imports parameters and handles the flow of the experiment.
     /// e.g. Trial progression, listeners etc.
     /// /// </summary>/// 
-    
+
     // basic experiment structure/ parameters to toggle.
     public string participant;
     public int TrialCount; //n walk trajectories
     public int TrialType;  // n targs absent, n present
     public int targCount; // targs presented (acculative), used to track data.
-    public bool isPractice=true; // determines walking guide motion (stationary during practice).
+    public bool isPractice = true; // determines walking guide motion (stationary during practice).
     public bool isStationary = true;
     int nStairs = 1; // number of staircases to use in quest procedure.
     bool disturbQuestContrast = false; // option to add some jitter to the quest estimates, during staircase.
@@ -47,7 +48,7 @@ public class runExperiment : MonoBehaviour
     public int detectIndex; // index to allocate response to correct target within walk.
     public int pauseRW; // used to pause the RW of a target while flash is being presented.
     public bool hasResponded; //listener for trigger responses after target onset < respone Window.
-    
+
     //trial  
     public List<float> FA_withintrial = new List<float>(); // collect RT of FA within each trial (wipes every trial) passed to RecordData.
 
@@ -62,7 +63,7 @@ public class runExperiment : MonoBehaviour
     showText showText;
     changeDirectionMaterial changeMat;
     targetAppearance targetAppearance;
-    
+
 
 
     // declare public GObjs.
@@ -77,6 +78,13 @@ public class runExperiment : MonoBehaviour
     // Result file
     // Current test value
     [SerializeField] [ReadOnly] private float tmpQ; // quest mean for each trial
+
+
+    // prep an LSL stream:
+    string StreamName = "LSL4Unity";
+    string StreamType = "Markers";
+    private StreamOutlet outlet;
+    private string[] sample = { "" };
 
     void Start()
     {
@@ -118,6 +126,15 @@ public class runExperiment : MonoBehaviour
         setXpos = false;
         changeMat.update(0); // render stop sign
         showText.updateText(1); // pre  exp instructions
+
+        // initialize LSL outlet"
+        var hash = new Hash128();
+        hash.Append(StreamName);
+        hash.Append(StreamType);
+        hash.Append(gameObject.GetInstanceID());
+        // set up stream params (note this may need to change from string to float type.)
+        StreamInfo streamInfo = new StreamInfo(StreamName, StreamType, 1, LSL.LSL.IRREGULAR_RATE, channel_format_t.cf_string, hash.ToString());
+        outlet = new StreamOutlet(streamInfo);
 
 
         print("setting up ... Press <space>  or <click> to confirm origin location");
@@ -316,6 +333,7 @@ public class runExperiment : MonoBehaviour
 
     private void startTrial()
     {
+       
 
         // clear previous trial info, reset, and assign from preallocated variables:
         trialinProgress = true; // for coroutine (handled in targetAppearance.cs).        
@@ -370,6 +388,11 @@ public class runExperiment : MonoBehaviour
         walkingGuide.walkMotion = walkingGuide.motion.start;
         walkingGuide.returnRotation = walkingGuide.motion.idle;
 
+        // mark trial start in LSL
+        if (outlet != null)
+        {
+            sample[0] = "trialType: " + TrialType;
+        }
 
 
         // define if walk/stationary based on trial ID: (i.e. if within practice blocks)
