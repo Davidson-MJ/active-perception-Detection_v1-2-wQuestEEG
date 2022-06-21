@@ -235,6 +235,7 @@ public class recordData : MonoBehaviour
             "targRT," +
             "targCor," +
             "targContrast," +    
+            "targContrastPosIdx," +
             "qStaircase," +
             "FA_rt," +
             ","+
@@ -282,6 +283,7 @@ public class recordData : MonoBehaviour
         //    "targRT," +
         //    "targCor," +
         //    "targContrast," +
+        //    "targContrastPosIdx," +
         //    "qStaircase," +
         //    "FA_rt," +
         //    "," +
@@ -300,6 +302,7 @@ public class recordData : MonoBehaviour
                   trialParameters.trialD.targResponseTime+ "," +
                   trialParameters.trialD.targCorrect  + "," +
                   trialParameters.trialD.targContrast   + ","+
+                  trialParameters.trialD.targContrastPosIdx + "," +
                   trialParameters.trialD.stairCase + "," +
                   strfts;
 

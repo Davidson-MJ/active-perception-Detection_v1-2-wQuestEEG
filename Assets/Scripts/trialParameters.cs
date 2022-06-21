@@ -35,7 +35,6 @@ public class trialParameters : MonoBehaviour
     private int[] targsPresented; // for the A19 walk space, set per trial.
     private int[] blockTypelist;
     public float[] prevCalibContrast; // only used if there was a crash / restarting without staircase:
-    public float[] myCalibContrast; // Filled after staircase.
                                     // import other settings:
     walkParameters walkParameters;
    runExperiment runExperiment;
@@ -44,7 +43,7 @@ public class trialParameters : MonoBehaviour
     [System.Serializable]
     public struct trialData
     {
-        public float trialNumber, blockID, trialID, isStationary, trialType, targContrast, targOnsetTime,
+        public float trialNumber, blockID, trialID, isStationary, trialType, targContrast, targContrastPosIdx, targOnsetTime,
             clickOnsetTime, targResponse, targResponseTime, targCorrect, stairCase;
         
     }
@@ -83,19 +82,8 @@ public class trialParameters : MonoBehaviour
         ntrialsperBlock = 20; // to do
         //
         nStaircaseBlocks = 1; // to do
-        if (nStaircaseBlocks == 0)
-        {
-            prevCalibContrast = new float[7]; // prefill the below if we have crashed/ restarting.
-            prevCalibContrast[0] = 0.4326741f;//f
-            prevCalibContrast[1] = 0.446537f;//f
-            prevCalibContrast[2] = 0.4603998f;//f
-            prevCalibContrast[3] = 0.4742627f;//f
-            prevCalibContrast[4] = 0.4881255f;//f
-            prevCalibContrast[5] = 0.5019883f;//f
-            prevCalibContrast[6] = 0.5158511f;//f
-        }
+       
 
-        myCalibContrast = new float[7];
         nRegularBlocks = 9;
 
         //float ratioSt2wlk = 1 / 4; // how many stand vs walking blocks?

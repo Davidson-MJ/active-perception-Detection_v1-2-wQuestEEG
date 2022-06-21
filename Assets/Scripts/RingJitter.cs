@@ -5,7 +5,7 @@ using UnityEngine;
 public class RingJitter : MonoBehaviour
 {
     // Start is called before the first frame update
-    randomWalk randomWalk;
+    BrownianMotion BrownianMotion;
     runExperiment runExperiment;
     targetAppearance targetAppearance;
     GameObject targetCylinder;
@@ -16,7 +16,7 @@ public class RingJitter : MonoBehaviour
     float stepDuration, t, stepDistance;
     void Start()
     {
-        randomWalk = GameObject.Find("TargetCylinder").GetComponent<randomWalk>();
+        BrownianMotion = GameObject.Find("TargetCylinder").GetComponent<BrownianMotion>();
         targetCylinder = GameObject.Find("TargetCylinder");
         runExperiment = GameObject.Find("scriptHolder").GetComponent<runExperiment>();
         targetAppearance = GameObject.Find("TargetCylinder").GetComponent<targetAppearance>();
@@ -41,7 +41,7 @@ public class RingJitter : MonoBehaviour
             transform.localPosition = origin;
         }
 
-        if (randomWalk.walk == randomWalk.phase.start)
+        if (BrownianMotion.walk == BrownianMotion.phase.start)
         {
             t = 0;
             origRotation = transform.localEulerAngles;
@@ -51,7 +51,7 @@ public class RingJitter : MonoBehaviour
             transform.localPosition = origin;
         }
         
-        if (randomWalk.walk == randomWalk.phase.walking)
+        if (BrownianMotion.walk == BrownianMotion.phase.walking)
         {
             t += Time.deltaTime;
 

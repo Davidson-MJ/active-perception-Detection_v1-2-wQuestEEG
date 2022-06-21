@@ -55,7 +55,7 @@ public class walkingGuide : MonoBehaviour
         runExp = GameObject.Find("scriptHolder").GetComponent<runExperiment>();
         changeDirectionMaterial = GameObject.Find("directionCanvas").GetComponent<changeDirectionMaterial>();
         // update local position height if necessary
-        Vector3 updatePosition = new Vector3(0, walkParameters.reachHeight, 0);
+        Vector3 updatePosition = new Vector3(0, walkParameters.ScreenHeight, 0);
         transform.localPosition = updatePosition;
 
         accelerationStartPoint = new Vector3[2]; // creates 3D vector, stopping at index 2. so [0 , 1] are 3D arrays
@@ -74,7 +74,7 @@ public class walkingGuide : MonoBehaviour
             if (walkMotion == motion.start) // update sesssion flow:
             {
                 // reset height for screen
-                walkParameters.updateReachHeight(); 
+                walkParameters.updateScreenHeight(); 
 
                 flipDirection = !flipDirection;
                 tDelta = 0;
@@ -217,7 +217,7 @@ public class walkingGuide : MonoBehaviour
     public void fillStartPos()
     {
         // 
-        walkParameters.updateReachHeight();
+        if (runExp.questready) { walkParameters.updateScreenHeight(); } // don't move screen until params are set.
 
         // fill the above 3D pos. (based on coords in world space).
         for (int i = 0; i < 2; i++)

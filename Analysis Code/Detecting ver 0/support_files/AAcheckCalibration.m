@@ -48,71 +48,70 @@ filename = pfols(ippant).name;
     ss= size(practIndex,1);
     practIndex(ss+1) = practIndex(ss)+1;
     
-    %% repair staircase allocation (freezing at start/end of blocks)
-%     evens = find(mod(T.trial,2)==0);
-%     odds =   find(mod(T.trial,2)~=0);
-%     
-%     T.qStaircase(evens)=1;
-%     T.qStaircase(odds)=2;
+ 
     %%
     disp([subjID ' has ' num2str((T.trial(practIndex(end)) +1)) ' practice trials']);
     %extract the rows in our table, with relevant data for assessing
     %calibration:
-    cols= {'r', 'b', 'k'};
-    lg=[];
+   
      %% figure 1
     figure(1);  clf; 
     set(gcf, 'color', 'w', 'units', 'normalized', 'position', [0 0 .5 .5]);
+    cols= {'r', 'b', 'k'};
+    lg=[];
     hold on;
-   nstairs = unique(T.qStaircase);
-   nstairs = nstairs(nstairs>0);
-   %%
+   stairTypes = unique(T.qStaircase);
+   %
    pcounter=1;
    for ipracblock = 1:nPrac
-    for iqstair=1:length(nstairs)% check all staircases.
-        usestair= nstairs(iqstair);
-        qstairtrials= find(T.qStaircase==usestair);
-        blckindx = find(T.block == nPracBlocks(ipracblock));
-        calibAxis = intersect(qstairtrials, blckindx);
+       for iqstair=1:length(stairTypes)% check all staircases.
+           usestair= stairTypes(iqstair);
+           qstairtrials= find(T.qStaircase==usestair);
+           blckindx = find(T.block == nPracBlocks(ipracblock));
+           calibAxis = intersect(qstairtrials, blckindx);
+           
+           if isempty(calibAxis)
+               continue
+           end
+           %calculate accuracy:
+           calibData = T.targCor(calibAxis);
+           calibAcc = zeros(1, length(calibData));
+           for itarg=1:length(calibData)
+               tmpD = calibData(1:itarg);
+               calibAcc(itarg) = sum(tmpD)/length(tmpD);
+           end
+           
+           %retain contrast values:
+           calibContrast = T.targContrast(calibAxis);
+           % also show the contrast used after staircase:
+           exprows = find(T.isPrac==0);
+           exprows=exprows(2:end); % remove first target out of staircase.
+           
     
-    %calculate accuracy:
-    calibData = T.targCor(calibAxis);
-    calibAcc = zeros(1, length(calibData));
-    for itarg=1:length(calibData)
-        tmpD = calibData(1:itarg);
-        calibAcc(itarg) = sum(tmpD)/length(tmpD);
-    end
-    
-    %retain contrast values:
-    calibContrast = T.targContrast(calibAxis);
-    % also show the contrast used after staircase:
-    exprows = find(T.isPrac==0);
-    exprows=exprows(2:end); % remove first target out of staircase.
-    expContrasts= unique(T.targContrast(exprows));
-    
- %%
-subplot(nPrac,2,pcounter);    
-plot(calibContrast, 'o-', 'color', cols{iqstair});
-title('contrast'); hold on; ylabel('contrast')
-xlabel('target count');
-% add the final contr values:
-for ic= 1:length(expContrasts)
-plot(xlim, [expContrasts(ic), expContrasts(ic)], ['r:']);
-end
+           %%
+           subplot(nPrac,2,pcounter);
+           plot(calibContrast, 'o-', 'color', cols{iqstair});
+           title('contrast'); hold on; ylabel('contrast')
+           xlabel('target count');
+           % add the final contr values:
+           %  expContrasts= unique(T.targContrast(exprows));
+           % for ic= 1:length(expContrasts)
+           % plot(xlim, [expContrasts(ic), expContrasts(ic)], ['r:']);
+           % end
+           
+           subplot(nPrac,2,pcounter+1);
+           lg(iqstair) = plot(calibAcc, 'o-', 'color', cols{iqstair}); title('Accuracy');
+           hold on; ylim([0 1])
+           xlabel('target count');
+           title(['Block ' num2str(ipracblock)])
 
-subplot(nPrac,2,pcounter+1);
-lg(iqstair) = plot(calibAcc, 'o-', 'color', cols{iqstair}); title('Accuracy');
-hold on; ylim([0 1])
-xlabel('target count');
-title(['Block ' num2str(ipracblock)]) 
-
-    end
-    pcounter=pcounter+2;
+       end
+       pcounter=pcounter+2;
    end
    
    %%
-cd([datadir filesep 'Figures' filesep 'Calibration'])
-    print('-dpng', [subjID ' quick summary'])
+   cd([datadir filesep 'Figures' filesep 'Calibration'])
+   print('-dpng', [subjID ' quick summary'])
     %%
     
     %%
@@ -135,7 +134,8 @@ cd([datadir filesep 'Figures' filesep 'Calibration'])
     
     
     %% also plot the result, just for the central staircase:
-    stairResult = find(T.targContrast== expContrasts(4));
+    
+    stairResult = find(T.targContrastPosIdx==4);
     midStair_standrows = intersect(stairResult, standingrows);
      midStair_walkrows = intersect(stairResult, walkingrows);
 
@@ -181,26 +181,7 @@ cd([datadir filesep 'Figures' filesep 'Calibration'])
     text(1-.25, standingRT*1.05, [num2str(round(standingRT,2))]);
     text(2-.25, walkRT*1.05, [num2str(round(walkRT,2))]);
     
-    %% 
-    % plot fits
-    ret=pwd;
-    % note for LT, the contrast logs are on desktop
-    if strcmp(subjID(1:4),'LT01')
-        %prep log.
-        cd('C:\Users\User\Desktop');
-        s =fileread('LT01log.txt');
-        [tokens]= regexp(s, 'value is (0.\d*)', 'tokens');
-        % disp(s(st(1):send(1)))
-        %convert to array:
-        nmat = [];
-        format short
-        for icon= 1:length(tokens)
-            nmat(icon) = str2double(tokens{icon});            
-        end
-        % now replace the contrast value in table with these correct ones.
-        T.targContrast(exprows) = nmat;
-   cd(ret);
-    end 
+   
     
 %     %% plot PF for standing and walking:
 %     % now we can extract the types correct for each.
@@ -222,7 +203,7 @@ for id=1:3
             col = [.7 0 0];
     end
 %     %for all exp rows, get the counts per contrast type.
-     StimLevelsall = T.targContrast(userows);
+     StimLevelsall = T.targContrastPosIdx(userows);
      responseall = T.targCor(userows);
 %      %Each entry of StimLevelsall corresponds to single trial
      OutOfNum = ones(1,size(StimLevelsall,1));

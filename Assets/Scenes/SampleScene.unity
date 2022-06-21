@@ -7462,7 +7462,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1415010972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cb42284df68fa544b3c9f4552a0bcaf, type: 3}
+  m_Script: {fileID: 11500000, guid: ce51604aa8b7c5c4ead37dfe7b1be8fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upperBoundaries: {x: 0, y: 0, z: 0}
@@ -14882,14 +14882,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1ee09535d8d81438bf87e9b2bbfcd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  participant: MD2
+  participant: md
   TrialCount: 0
   TrialType: 0
+  BlockType: 0
   targCount: 0
   isPractice: 0
   isStationary: 1
+  prepLSL: 0
   trialinProgress: 0
   updateText: 0
+  questready: 0
   collectTrialSummary: 0
   trialTime: 0
   targState: 0
@@ -14900,11 +14903,12 @@ MonoBehaviour:
   hmd: {fileID: 1137631249}
   effector: {fileID: 1137631248}
   SphereShader: {fileID: 0}
+  redX: {fileID: 0}
   questP: {fileID: 0}
-  questStair1: {fileID: 0}
-  questStair2: {fileID: 0}
-  questStair3: {fileID: 0}
-  tmpQ: 0
+  questStair: []
+  Qcontrast: 0
+  Qlowquantile: 0
+  contrastOptions: []
 --- !u!4 &1896417866
 Transform:
   m_ObjectHideFlags: 0
@@ -14999,7 +15003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f4d57c76bfcdd489099d1b9ab257cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reachHeight: 0
+  ScreenHeight: 0
   walkingPathDistance: 0
   walkingSpeed: 0
   walkDuration: 0
@@ -15041,7 +15045,6 @@ MonoBehaviour:
   trialTypeArray: 
   targRange: []
   prevCalibContrast: []
-  myCalibContrast: []
   trialD:
     trialNumber: 0
     blockID: 0
@@ -15049,6 +15052,7 @@ MonoBehaviour:
     isStationary: 0
     trialType: 0
     targContrast: 0
+    targContrastPosIdx: 0
     targOnsetTime: 0
     clickOnsetTime: 0
     targResponse: 0

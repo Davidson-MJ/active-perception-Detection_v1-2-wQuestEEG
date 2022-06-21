@@ -12,7 +12,7 @@ public class walkParameters : MonoBehaviour
     // random walk params
     [Header("Walking/Tracking Parameters")]
     //public float trialDuration;
-    public float reachHeight;
+    public float ScreenHeight;
     public float walkingPathDistance;
     public float walkingSpeed;
     public float walkDuration;
@@ -53,7 +53,7 @@ public class walkParameters : MonoBehaviour
     // That way, these fields will be available in other scripts Start () calls
     void Start()
     {
-        reachHeight = 1.5f;
+        ScreenHeight = 1.5f;
         walkDuration = 9f;// 
         walkingPathDistance = 9.5f;//  Determines end point. 
 
@@ -74,7 +74,7 @@ public class walkParameters : MonoBehaviour
 
         cubeDimensions = new Vector3(2f, 2f, 2f); // sets boundaries for the RW (now scaled for small screen).
 
-        //RW params set in randomWalk.cs
+        //RW params set in BrownianMotion.cs
         stepDurationRange = new Vector2(0.2f, 0.4f); // update the direction of targer in this interval.
         // for sphere shader:
         //stepDistanceRange = new Vector2(0.03f, 0.045f); // set with David 2020-02-13 (RTKeys)
@@ -83,27 +83,26 @@ public class walkParameters : MonoBehaviour
         stepDistanceRange = new Vector2(0.7f, 0.8f); // not xy, but a range for the distance RW will step. now much smoother.
 
         motionPath = GameObject.Find("motionPath");
-
         hmd = GameObject.Find("VRCamera");
         
     }
 
     // METHODS:
-    public void updateReachHeight()
+    public void updateScreenHeight()
     {
 
         Vector3 headPosition = hmd.transform.position;
-        //headPosition.y = Round(headPosition.y, 1);
-        reachHeight = hmd.transform.position.y * reachBelowPcnt;
+        ScreenHeight = hmd.transform.position.y * reachBelowPcnt;
          
-
         Vector3 currentPos = motionPath.transform.localPosition;
         //note that reachHeight is updated in runExperiment, based on hmd position.
-        Vector3 updatePosition = new Vector3(currentPos.x, reachHeight, currentPos.z);
+        Vector3 updatePosition = new Vector3(currentPos.x, ScreenHeight, currentPos.z);
         //update motionPath height.
 
         motionPath.transform.localPosition = updatePosition;
 
+        // alternatively:
+        //objHoverscreen.transform.position = new Vector3(objHoverscreen.transform.position.x, objHMD.transform.position.y, objHoverscreen.transform.position.z);
 
     }
 }
