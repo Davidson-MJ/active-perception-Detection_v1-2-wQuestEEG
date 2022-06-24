@@ -353,6 +353,7 @@ private void startTrial()
     if (prepLSL && outlet != null)
     {
         sample[0] = "trialType: " + TrialType;
+        outlet.push_sample(sample);
     }
 
 
