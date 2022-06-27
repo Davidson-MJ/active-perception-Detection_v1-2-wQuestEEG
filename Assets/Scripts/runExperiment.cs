@@ -80,9 +80,9 @@ public class runExperiment : MonoBehaviour
     // prep an LSL stream:
 
     string StreamName = "LSL4Unity";
-            string StreamType = "Markers";
-            private StreamOutlet outlet;
-            private string[] sample = { "" };
+    string StreamType = "Markers";
+    private StreamOutlet outlet;
+    private string[] sample = { "" };
     
 
 void Start()
@@ -129,7 +129,7 @@ void Start()
     contrastOptions = new float[7];
 
         // initialize LSL outlet"
-        if (prepLSL)
+    if (prepLSL)
     {
         var hash = new Hash128();
         hash.Append(StreamName);
@@ -377,6 +377,7 @@ private void startTrial()
     if (prepLSL && outlet != null)
     {
         sample[0] = "trialType: " + TrialType;
+        outlet.push_sample(sample);
     }
 
 
@@ -398,7 +399,7 @@ private void startTrial()
     print("Starting Trial " + (TrialCount + 1) + " of " + trialParams.nTrials + ", " + TrialType + " to detect");
     targetAppearance.startSequence(); // co routine in another script.
 
-}
+    }
 
 // method for collecting responses after target presentation, assigning correct or not.
 private void collectDetect()
