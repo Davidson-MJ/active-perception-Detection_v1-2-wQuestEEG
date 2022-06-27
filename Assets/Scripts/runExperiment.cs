@@ -24,9 +24,11 @@ public class runExperiment : MonoBehaviour
     public int TrialType;  // n targs absent, n present
     public int BlockType; // walking, stationary (int)
     public int targCount; // targs presented (acculative), used to track data.
+    public bool forceEyeCalibration = false;
     public bool isPractice = true; // determines walking guide motion (stationary during practice).
     public bool isStationary = true;
     public bool prepLSL = false;
+    public bool isEyeTracked = true;
 
     // flow managers
     public bool trialinProgress; // handles current state within experiment 
@@ -61,10 +63,10 @@ public class runExperiment : MonoBehaviour
     changeDirectionMaterial changeMat;
     targetAppearance targetAppearance;
     myMathsMethods myMathsMethods;
-
+    EyetrackProcesses EyetrackProcesses;
 
     // declare public Game Objects.
-    public GameObject hmd, effector, SphereShader, redX;
+    public GameObject hmd, effector, SphereShader, redX, objSRanipal;
 
 
     //For quest:
@@ -99,7 +101,9 @@ void Start()
     changeMat = GameObject.Find("directionCanvas").GetComponent<changeDirectionMaterial>();
     redX = GameObject.Find("RedX");
 
-    questStair = new QuestStaircase[2]; // one staircase each for walking, and stationary condition.
+    EyetrackProcesses = GameObject.Find("SRanipal").GetComponent<EyetrackProcesses>();
+
+        questStair = new QuestStaircase[2]; // one staircase each for walking, and stationary condition.
     for (int i = 0; i < 2; i++)
     {
         questStair[i] = GetComponent<QuestStaircase>();
@@ -135,7 +139,16 @@ void Start()
         StreamInfo streamInfo = new StreamInfo(StreamName, StreamType, 1, LSL.LSL.IRREGULAR_RATE, channel_format_t.cf_string, hash.ToString());
         outlet = new StreamOutlet(streamInfo);
     }
-}
+
+        if (isEyeTracked)
+        {
+            EyetrackProcesses.eyeStartup();
+        }
+        else
+        {
+            objSRanipal.SetActive(false);
+        }
+    }
 
 
 private void Update()
@@ -156,6 +169,14 @@ private void Update()
 
 
     }
+
+    //
+     // check if eyeCalibration needs to be redone (bool state toggled in inspector window only).
+        if(forceEyeCalibration)
+        {
+                EyetrackProcesses.eyeStartup();
+            forceEyeCalibration = false;
+        }
 
     if (updateText) // don't access method every frame, just at block end.
     {
@@ -299,7 +320,10 @@ void CalibrateStartPos()
 
 private void startTrial()
 {
-    // re-calibrate screen height to participants hmd:
+   
+       
+
+        // re-calibrate screen height to participants hmd:
     walkParams.updateScreenHeight();
 
 
@@ -469,36 +493,22 @@ private void updateTargContrast(trialParameters trialParams)
 
     // use Block type as index for staircase
     questStair[BlockType].UpdateQ(Qcontrast, tmpAcc);
+
     Qcontrast = (float)questStair[BlockType].Mean();
-    Qlowquantile = (float)questStair[BlockType].Quantile(.25);
+    // space about qmean, based on history of guesses:
+    // calling .Quantile is slow, so just do it once.
+        float tdiff = Qcontrast - (float)questStair[BlockType].Quantile(.25);
 
 
-    // if we are outside the practice block, add the jitter to each contrast value,
-    // based  on Qlowquantile of the quest distribution
-    //if (!isPractice)
-    //{
+        // after pilotting, these intervals help to recreate the psych-fxns (low lapse rates). quick saturation of accuracy above qmean, and below.
+        contrastOptions[0] = Qcontrast - tdiff;
+        contrastOptions[1] = Qcontrast - tdiff * 0.75f;
+        contrastOptions[2] = Qcontrast - tdiff * 0.5f;
+        contrastOptions[3] = Qcontrast;
+        contrastOptions[4] = Qcontrast + tdiff * 0.5f;
+        contrastOptions[5] = Qcontrast + tdiff * 0.75f;
+        contrastOptions[6] = Qcontrast + tdiff; 
 
-        // don' go below the backround contrast.
-        if (Qlowquantile < trialParams.probeColor[0])
-        {
-            Qlowquantile = trialParams.probeColor[0];
-            print("warning: lower quantile exceeds background contrast, adjusting range");
-        }
-
-        // we want to present targets either
-        // at threshold (Qmean) and +/-
-        // 1* Qlowquantile from Qmean (with higher prob)
-        // 2* Qlowquantile from Qmean
-
-        float tdiff = Qcontrast - Qlowquantile;
-
-            contrastOptions[0] = Qcontrast - (2 * tdiff);
-            contrastOptions[1] = Qcontrast - tdiff;
-            contrastOptions[2] = Qcontrast - tdiff;
-            contrastOptions[3] = Qcontrast;
-            contrastOptions[4] = Qcontrast + tdiff;
-            contrastOptions[5] = Qcontrast + tdiff;
-            contrastOptions[6] = Qcontrast + (2 * tdiff);
 
         // now select one of these at random:                
         indexRandom = Random.Range(0, 7);
@@ -524,8 +534,7 @@ private void updateTargContrast(trialParameters trialParams)
     // store the trial/target params for offline analysis.
     trialParams.trialD.stairCase = BlockType;
         
-        print("Using staircase " + BlockType);
-        print("Qlow was " + Qlowquantile);
+        print("Using staircase " + BlockType);     
         print("using index " + indexRandom);
         print("Contrast is : " + Qcontrast);
 }
@@ -566,7 +575,7 @@ public void determineText()
         setXpos = false;
     }
 
-
+   
 
 
 }

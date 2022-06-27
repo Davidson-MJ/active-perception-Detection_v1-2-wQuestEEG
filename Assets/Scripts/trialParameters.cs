@@ -44,7 +44,7 @@ public class trialParameters : MonoBehaviour
     public struct trialData
     {
         public float trialNumber, blockID, trialID, isStationary, trialType, targContrast, targContrastPosIdx, targOnsetTime,
-            clickOnsetTime, targResponse, targResponseTime, targCorrect, stairCase;
+            clickOnsetTime, targResponse, targResponseTime, targCorrect, stairCase, degExperimentE, degPracticalE, intPracticalE; 
         
     }
 
@@ -186,7 +186,7 @@ public class trialParameters : MonoBehaviour
         blockTypelist[5] = 1;
         blockTypelist[6] = 1;
         blockTypelist[7] = 1;
-        blockTypelist[7] = 1;
+        blockTypelist[8] = 1;
 
 
         // shuffle the order of stationary (0s) and walking (1s) blocks

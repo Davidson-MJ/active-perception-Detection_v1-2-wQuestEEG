@@ -33,15 +33,15 @@ public class QuestParam : MonoBehaviour
         // set the initial values:
         //tGuess is your prior threshold estimate.
         //tGuessSd is the sd you assign to that guess.Be generous
-        //QuestParameters.tGuess = 20*Mathf.Log10(0.45f);
-        QuestParameters.tGuess = 0.45f;
+
+        QuestParameters.tGuess = 0.45f; // note that background is at 0.4
         QuestParameters.tGuessSd = 2f;
         QuestParameters.pThreshold = 0.75f;
         QuestParameters.beta = 3.5f; // steepness of psychometric fxn
         QuestParameters.delta = 0.01f; // lapse rate (fraction of trials ppant responses are random)
         QuestParameters.gamma = 0.5f; //is the fraction of trials that will generate response 1 when intensity == -in
-        QuestParameters.grain = .002f;//// quantization(step size) of the interval table
-        QuestParameters.range = 2f; //// in same scale. range/2:tGuess:range/2
+        QuestParameters.grain = .004f;//// quantization(finest possible step size) of the interval table
+        QuestParameters.range = 1f; //// in same scale. -range/2:tGuess:range/2
 
         //QuestParameters.targetContrast = 0.45f;
 

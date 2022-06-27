@@ -53,7 +53,7 @@ public class walkParameters : MonoBehaviour
     // That way, these fields will be available in other scripts Start () calls
     void Start()
     {
-        ScreenHeight = 1.5f;
+        ScreenHeight = 1.7f;
         walkDuration = 9f;// 
         walkingPathDistance = 9.5f;//  Determines end point. 
 

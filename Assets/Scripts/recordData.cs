@@ -23,8 +23,8 @@ public class recordData : MonoBehaviour
     string[] timePointAxis = new string[9];
     string[] timePointObject = new string[9];
     float[] timePointPosition = new float[9];
-    public GameObject
-        TargetCylinder, effector, hmd;
+
+    public GameObject objTarget, objEffector, objHMD, objHoverscreen;
 
 
     List<string> outputData_pos = new List<string>();
@@ -33,6 +33,10 @@ public class recordData : MonoBehaviour
     runExperiment runExperiment;
     ViveInput viveInput;
     trialParameters trialParameters;
+    VisualCalc VisualCalc;
+
+    EyetrackProcesses EyetrackProcesses;
+
 
     // obj refs for trialParams.trialD :
     private float trialNumber, blockID, trialID, isStationary, trialType,
@@ -57,10 +61,24 @@ public class recordData : MonoBehaviour
         runExperiment = GetComponent<runExperiment>();
         viveInput = GetComponent<ViveInput>();
         trialParameters  = GetComponent<trialParameters>();
-
+        VisualCalc = GetComponent<VisualCalc>();       
+        EyetrackProcesses = GameObject.Find("SRanipal").GetComponent<EyetrackProcesses>();
 
         outputFolder = "C:/Users/User/Documents/matt/GitHub/active-perception-Detection_v1-2-wQuestEEG/Analysis Code/Detecting ver 0/Raw_data/";
 
+        if (runExperiment.isEyeTracked)
+        {
+            timePointAxis = new string[12]; //3dims x head, target, eyeO, eyeD.
+            timePointObject = new string[12];
+            timePointPosition = new float[12];
+
+        }
+        else
+        {
+            timePointAxis = new string[6]; //3dims x head ,target
+            timePointObject = new string[6];
+            timePointPosition = new float[6];
+        }
         // create text file for Position tracking data.
         createPositionTextfile(); // below for details.
 
@@ -84,9 +102,28 @@ public class recordData : MonoBehaviour
         {
             // record target and effector ('cursor') position every frame
             // for efficiency, only call 'transform' once per frame
-            Vector3 currentTarget = TargetCylinder.transform.position;
-            Vector3 currentVeridicalEffector = effector.transform.position;
-            Vector3 currentHead = hmd.transform.position;
+          
+            Vector3 currentTarget = objTarget.transform.position;
+            Vector3 currentVeridicalEffector = objEffector.transform.position;
+            Vector3 currentHead = objHMD.transform.position;
+            Vector3 currentEyeDirection = EyetrackProcesses.vectGazeDirection;
+            Vector3 currentEyeOrigin = EyetrackProcesses.vectGazeOrigin / (float)(10 * 100);
+            Vector3 vectTargetDiff = objHMD.transform.worldToLocalMatrix.MultiplyVector(currentTarget - currentHead);
+
+            //Vector3 vectTargetDiff = VisualCalc.objectRotationMatrix(objHMD.transform.eulerAngles) * (posCurrentTarget - posCurrentHead);
+            Vector3 vectTargetRight = new Vector3(-vectTargetDiff.x, vectTargetDiff.y, vectTargetDiff.z);
+
+            // degree of eccentricity (eye away from target)
+            trialParameters.trialD.degPracticalE = VisualCalc.visPracticalAngle(currentEyeOrigin, currentEyeDirection, vectTargetRight);
+
+            if (trialParameters.trialD.degPracticalE < 7f) // if outside 7 deg, mark as central or peripheral.
+            {
+                trialParameters.trialD.intPracticalE = 0; // eye fix was within 7 deg of target.
+            }
+            else
+            {
+                trialParameters.trialD.intPracticalE = 1;
+            }
 
             // convert from bool
 
@@ -96,16 +133,23 @@ public class recordData : MonoBehaviour
             timePointPosition[0] = currentTarget.x;
             timePointPosition[1] = currentTarget.y;
             timePointPosition[2] = currentTarget.z;
-            timePointPosition[3] = currentVeridicalEffector.x;
-            timePointPosition[4] = currentVeridicalEffector.y;
-            timePointPosition[5] = currentVeridicalEffector.z;
-            timePointPosition[6] = currentHead.x;
-            timePointPosition[7] = currentHead.y;
-            timePointPosition[8] = currentHead.z;
+        
+            timePointPosition[3] = currentHead.x;
+            timePointPosition[4] = currentHead.y;
+            timePointPosition[5] = currentHead.z;
 
+
+            if (runExperiment.isEyeTracked)
+            {
+                timePointPosition[6] = currentEyeOrigin.x;
+                timePointPosition[7] = currentEyeOrigin.y;
+                timePointPosition[8] = currentEyeOrigin.z;
+                timePointPosition[9] = currentEyeDirection.x;
+                timePointPosition[10] = currentEyeDirection.y;
+                timePointPosition[11] = currentEyeDirection.z;
+            }
 
             // convert bools to ints.
-            int testPrac = runExperiment.isPractice ? 1 : 0;
             int testStat = runExperiment.isStationary ? 1 : 0;
 
 
@@ -115,7 +159,6 @@ public class recordData : MonoBehaviour
                     System.DateTime.Now.ToString("yyyy-MM-dd") + "," +
                     runExperiment.participant + "," +
                     runExperiment.TrialCount + "," +
-                    testPrac + "," +
                     testStat + "," +
                     trialTime + "," +
                     timePointObject[j] + "," +
@@ -181,7 +224,6 @@ public class recordData : MonoBehaviour
             // add experiment: walkingTracking2D
             "participant," +
             "trial," +
-            "isPrac," +
             "isStationary," +
             "t," +
             "trackedObject," +
@@ -195,25 +237,39 @@ public class recordData : MonoBehaviour
 
 
 
-        timePointAxis[0] = "x";
+        timePointAxis[0] = "x"; 
         timePointAxis[1] = "y";
-        timePointAxis[2] = "z";
+        timePointAxis[2] = "z";//targ
         timePointAxis[3] = "x";
         timePointAxis[4] = "y";
-        timePointAxis[5] = "z";
-        timePointAxis[6] = "x";
-        timePointAxis[7] = "y";
-        timePointAxis[8] = "z";
+        timePointAxis[5] = "z";//head
+
 
         timePointObject[0] = "target";
         timePointObject[1] = "target";
         timePointObject[2] = "target";
-        timePointObject[3] = "effector";
-        timePointObject[4] = "effector";
-        timePointObject[5] = "effector";
-        timePointObject[6] = "head";
-        timePointObject[7] = "head";
-        timePointObject[8] = "head";
+        timePointObject[3] = "head";
+        timePointObject[4] = "head";
+        timePointObject[5] = "head";
+
+        if (runExperiment.isEyeTracked)
+        {
+            timePointAxis[6] = "x";
+            timePointAxis[7] = "y";
+            timePointAxis[8] = "z";//gazeO
+
+            timePointAxis[9] = "x";
+            timePointAxis[10] = "y";
+            timePointAxis[11] = "z";//gazeD
+
+            timePointObject[6] = "gazeOrigin";
+            timePointObject[7] = "gazeOrigin";
+            timePointObject[8] = "gazeOrigin";
+
+            timePointObject[9] = "gazeDirection";
+            timePointObject[10] = "gazeDirection";
+            timePointObject[11] = "gazeDirection";
+        }
     }
     private void createSummaryTextfile()
     {
@@ -227,19 +283,28 @@ public class recordData : MonoBehaviour
             "participant," +
             "trial," +
             "block," +
-            "trialID,"+
+            "trialID," +
             "isPrac," +
             "isStationary," +
             "nTarg," +
             "targOnset," +
             "targRT," +
             "targCor," +
-            "targContrast," +    
+            "targContrast," +
             "targContrastPosIdx," +
-            "qStaircase," +
-            "FA_rt," +
-            ","+
-            "\r\n";
+            "qStaircase,";
+
+        if (runExperiment.isEyeTracked)
+        {
+            columnNames +=
+            "intActualE," +
+            "degActualE,";
+        }
+       columnNames +=  "FA_rt," +","+ "\r\n";
+
+
+
+
 
         File.WriteAllText(outputFile_summary, columnNames);
 
@@ -269,7 +334,7 @@ public class recordData : MonoBehaviour
 
         // convert bools to ints.
         int testPrac = runExperiment.isPractice ? 1 : 0;
-        
+
         // fill data:
         //    "date,"+
         //    "participant," +
@@ -296,17 +361,30 @@ public class recordData : MonoBehaviour
                   trialParameters.trialD.blockID + "," +
                   trialParameters.trialD.trialID + "," +
                   testPrac + "," +
-                  trialParameters.trialD.isStationary    + "," +
+                  trialParameters.trialD.isStationary + "," +
                   trialParameters.trialD.trialType + "," +
                   trialParameters.trialD.targOnsetTime + "," +
-                  trialParameters.trialD.targResponseTime+ "," +
-                  trialParameters.trialD.targCorrect  + "," +
-                  trialParameters.trialD.targContrast   + ","+
+                  trialParameters.trialD.targResponseTime + "," +
+                  trialParameters.trialD.targCorrect + "," +
+                  trialParameters.trialD.targContrast + "," +
                   trialParameters.trialD.targContrastPosIdx + "," +
-                  trialParameters.trialD.stairCase + "," +
-                  strfts;
+                  trialParameters.trialD.stairCase + ",";
 
-            outputData_summary.Add(data);
+        if (runExperiment.isEyeTracked)
+        {
+            data +=
+            trialParameters.trialD.intPracticalE + "," + // 
+            trialParameters.trialD.degPracticalE + ",";
+            //print(trialParameters.trialD.degPracticalE);
+        }
+
+        data += strfts;
+
+
+
+
+
+        outputData_summary.Add(data);
 
             
        

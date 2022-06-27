@@ -135,7 +135,7 @@ filename = pfols(ippant).name;
     
     %% also plot the result, just for the central staircase:
     
-    stairResult = find(T.targContrastPosIdx==4);
+    stairResult = find(T.targContrastPosIdx==3);
     midStair_standrows = intersect(stairResult, standingrows);
      midStair_walkrows = intersect(stairResult, walkingrows);
 
@@ -146,7 +146,7 @@ filename = pfols(ippant).name;
     figure(2);  clf; 
     set(gcf, 'color', 'w', 'units', 'normalized', 'position', [0 0 .5 .5]);
    
-    subplot(131)
+    subplot(231)
     bar([standingAcc, walkAcc])
     hold on;
     plot(1, midstandAcc, 'r-o')
@@ -171,7 +171,7 @@ filename = pfols(ippant).name;
      standingRT = nansum(allRTs(standingrows))/ length(standingrows);   
      walkRT = nansum(allRTs(walkingrows))/ length(walkingrows);
     
-    subplot(132)
+    subplot(232)
     bar([standingRT, walkRT], 'Facecolor', 'r')
     shg
     title(subjID);
@@ -181,7 +181,7 @@ filename = pfols(ippant).name;
     text(1-.25, standingRT*1.05, [num2str(round(standingRT,2))]);
     text(2-.25, walkRT*1.05, [num2str(round(walkRT,2))]);
     
-   
+   ylim([0 .7])
     
 %     %% plot PF for standing and walking:
 %     % now we can extract the types correct for each.
@@ -189,7 +189,16 @@ filename = pfols(ippant).name;
 %%     exprows=standingrows;
 % figure()
 %%
+%% note that in contrast pos 0,1,2,3,4,5,6, [1,2], and [4,5] are equivalent.
+changeto_1= find(T.targContrastPosIdx==2);
+T.targContrastPosIdx(changeto_1)=1;
+
+changeto_5= find(T.targContrastPosIdx==4);
+T.targContrastPosIdx(changeto_5)=5;
 leg=[];
+%%
+clf
+
 for id=1:3
     switch id
         case 1
@@ -246,7 +255,7 @@ disp(message);
 ProportionCorrectObserved=NumPos./OutOfNum; 
 StimLevelsFineGrain=[min(StimList):max(StimList)./1000:max(StimList)];
 ProportionCorrectModel = PF(paramsValues,StimLevelsFineGrain);
- subplot(133);
+ subplot(233);
 title('MaxLL PF');
 % axes
 hold on
@@ -261,6 +270,34 @@ ylabel('proportion correct');
 hold on
 end
 legend(leg,{'exp', 'walking', 'standing'}, 'Location','SouthEast')
+%%
+subplot(234); cla
+% mean contrast per position.
+for id=1:3
+    switch id
+        case 1
+            userows= exprows;
+            col= [.2 .2 .2];
+        case 2
+            userows = walkingrows;
+            col = [0 .7 0];
+        case 3
+            userows= standingrows;
+            col = [.7 0 0];
+    end
+binnedC= zeros(1,7);
+    %%
+    for ibin= 1:7
+    tmprows = intersect(userows, find(T.targContrastPosIdx == ibin-1));
+    
+    binnedC(ibin) = mean(T.targContrast(tmprows));
+    end
+    hold on;
+    
+    plot(1:7, binnedC, 'o-', 'Color', col)
+end
+
+
 %%
 cd([datadir filesep 'Figures' filesep 'Calibration'])
     print('-dpng', [subjID ' quick summary2'])
