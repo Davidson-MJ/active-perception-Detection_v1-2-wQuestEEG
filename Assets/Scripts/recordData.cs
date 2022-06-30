@@ -103,18 +103,28 @@ public class recordData : MonoBehaviour
             // record target and effector ('cursor') position every frame
             // for efficiency, only call 'transform' once per frame
           
-            Vector3 currentTarget = objTarget.transform.position;
-            Vector3 currentVeridicalEffector = objEffector.transform.position;
+            Vector3 currentTarget = objTarget.transform.position; // world ?
+            Vector3 currentVeridicalEffector = objEffector.transform.position; //world
             Vector3 currentHead = objHMD.transform.position;
             Vector3 currentEyeDirection = EyetrackProcesses.vectGazeDirection;
-            Vector3 currentEyeOrigin = EyetrackProcesses.vectGazeOrigin / (float)(10 * 100);
+            Vector3 currentEyeOrigin = EyetrackProcesses.vectGazeOrigin/ (float)(10 * 100);
             Vector3 vectTargetDiff = objHMD.transform.worldToLocalMatrix.MultiplyVector(currentTarget - currentHead);
 
             //Vector3 vectTargetDiff = VisualCalc.objectRotationMatrix(objHMD.transform.eulerAngles) * (posCurrentTarget - posCurrentHead);
             Vector3 vectTargetRight = new Vector3(-vectTargetDiff.x, vectTargetDiff.y, vectTargetDiff.z);
 
+
+            Vector3 currentEyeOrigin_Global = new Vector3(-currentEyeOrigin.x, currentEyeOrigin.y, currentEyeOrigin.z);
+            Vector3 currentEyeDirection_Global = new Vector3(-currentEyeDirection.x, currentEyeDirection.y, currentEyeDirection.z);
+           
+            currentEyeOrigin_Global = objHMD.transform.localToWorldMatrix.MultiplyVector(currentEyeOrigin_Global);
+            currentEyeDirection_Global = objHMD.transform.localToWorldMatrix.MultiplyVector(currentEyeDirection_Global);
+
+
+
             // degree of eccentricity (eye away from target)
             trialParameters.trialD.degPracticalE = VisualCalc.visPracticalAngle(currentEyeOrigin, currentEyeDirection, vectTargetRight);
+
 
             if (trialParameters.trialD.degPracticalE < 7f) // if outside 7 deg, mark as central or peripheral.
             {
@@ -141,12 +151,12 @@ public class recordData : MonoBehaviour
 
             if (runExperiment.isEyeTracked)
             {
-                timePointPosition[6] = currentEyeOrigin.x;
-                timePointPosition[7] = currentEyeOrigin.y;
-                timePointPosition[8] = currentEyeOrigin.z;
-                timePointPosition[9] = currentEyeDirection.x;
-                timePointPosition[10] = currentEyeDirection.y;
-                timePointPosition[11] = currentEyeDirection.z;
+                timePointPosition[6] = currentEyeOrigin_Global.x;
+                timePointPosition[7] = currentEyeOrigin_Global.y;
+                timePointPosition[8] = currentEyeOrigin_Global.z;
+                timePointPosition[9] = currentEyeDirection_Global.x;
+                timePointPosition[10] = currentEyeDirection_Global.y;
+                timePointPosition[11] = currentEyeDirection_Global.z;
             }
 
             // convert bools to ints.

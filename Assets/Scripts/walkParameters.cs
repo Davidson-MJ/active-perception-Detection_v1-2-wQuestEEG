@@ -61,7 +61,7 @@ public class walkParameters : MonoBehaviour
         //walkingPathDistance = 7.5f;//  Determines end point. 
 
         //approx steps is dist / 0.5
-        reachBelowPcnt = 0.85f;
+        reachBelowPcnt = 0.90f;
         rampDistance = 0f;// 0.7f; // used in walkingGuide, added to total path distance above.
         rampDuration = 1f; // used in walkingGuide
         guideDistance = 0.5f; // this is an offset, used to place the WG in front of the HMD, on calibration

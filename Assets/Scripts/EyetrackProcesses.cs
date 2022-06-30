@@ -18,6 +18,10 @@ public class EyetrackProcesses : MonoBehaviour
         trialParameters = GameObject.Find("scriptHolder").GetComponent<trialParameters>();
         runExperiment = GameObject.Find("scriptHolder").GetComponent<runExperiment>();
     }
+    
+    
+    
+    
     public void eyeStartup()
     {
         if(!SRanipal_Eye_Framework.Instance.EnableEye)
@@ -25,7 +29,7 @@ public class EyetrackProcesses : MonoBehaviour
             Debug.Log("When in doubt, go to the Framework",GameObject.Find("SRanipal")); // Adapted from quote by Ron Weasley
             if (UnityEditor.EditorApplication.isPlaying)
             {
-                UnityEditor.EditorApplication.isPlaying = false;
+                //UnityEditor.EditorApplication.isPlaying = false;
             }
         } 
         if(!SRanipal_Eye_API.IsViveProEye())
@@ -62,7 +66,7 @@ public class EyetrackProcesses : MonoBehaviour
                 if (UnityEditor.EditorApplication.isPlaying)
                 {
                 //UnityEditor.EditorApplication.isPlaying = false; //MD toggled, to keep the editor running.
-                }
+            }
             }
             else
             {
@@ -75,7 +79,11 @@ public class EyetrackProcesses : MonoBehaviour
         if (runExperiment.isEyeTracked && runExperiment.trialinProgress)
         {
             if (SRanipal_Eye_Framework.Status != SRanipal_Eye_Framework.FrameworkStatus.WORKING &&
-                SRanipal_Eye_Framework.Status != SRanipal_Eye_Framework.FrameworkStatus.NOT_SUPPORT) return;
+                SRanipal_Eye_Framework.Status != SRanipal_Eye_Framework.FrameworkStatus.NOT_SUPPORT)
+                
+                return;
+
+
             if (SRanipal_Eye_Framework.Instance.EnableEyeDataCallback == true && eye_callback_registered == false)
             {
                 SRanipal_Eye_v2.WrapperRegisterEyeDataCallback(Marshal.GetFunctionPointerForDelegate((SRanipal_Eye_v2.CallbackBasic)EyeCallback));

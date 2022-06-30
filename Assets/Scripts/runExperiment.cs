@@ -29,7 +29,7 @@ public class runExperiment : MonoBehaviour
     public bool isStationary = true;
     public bool prepLSL = false;
     public bool isEyeTracked = true;
-
+    private int npractrials = 1; // 0 : n practice trials before staircase is initiated.
     // flow managers
     public bool trialinProgress; // handles current state within experiment 
     private bool FAthistrial; // listen for FA in no targ trials, pass to update staircase/recording data.
@@ -71,7 +71,8 @@ public class runExperiment : MonoBehaviour
 
     //For quest:
     public QuestParam questP;
-    public QuestStaircase[] questStair;
+    //public QuestStaircase[] questStair, questStair2;
+             QuestStaircase[] questStair;
 
     [SerializeField] [ReadOnly] private float Qcontrast, Qlowquantile; // quest mean , and lower quantile for each iteration
     public float[] contrastOptions;
@@ -174,8 +175,16 @@ private void Update()
      // check if eyeCalibration needs to be redone (bool state toggled in inspector window only).
         if(forceEyeCalibration)
         {
-                EyetrackProcesses.eyeStartup();
+            EyetrackProcesses.eyeStartup();
+           
             forceEyeCalibration = false;
+            // if all else fails.
+            //for (int i = 0; i < 2; i++)
+            //{
+            //    questStair[i] = GetComponent<QuestStaircase>();
+            //}
+            //InitQuestParams(Qcontrast);
+
         }
 
     if (updateText) // don't access method every frame, just at block end.
@@ -427,7 +436,7 @@ private void collectDetect()
 
 
             // Update contrast, after the first 3 trials of both practice blocks.
-            if (isPractice && trialParams.blockTypeArray[TrialCount, 1] > 2)
+            if (isPractice && trialParams.blockTypeArray[TrialCount, 1] > npractrials)
             {
                 updateTargContrast(trialParams); // based on staircase.
             }
@@ -466,7 +475,7 @@ private void collectOmit() // only relevant to response window following targs.
     // update targ contrast if within staircase block. and after first 3 trials.
 
     // Uupdate contrast, after the first 3 trials of both practice blocks.
-    if (isPractice && trialParams.blockTypeArray[TrialCount, 1] > 2)
+    if (isPractice && trialParams.blockTypeArray[TrialCount, 1] > npractrials)
     {
         updateTargContrast(trialParams); // based on staircase.
     }
@@ -492,8 +501,18 @@ private void updateTargContrast(trialParameters trialParams)
     // update the relevant staircase, based on whether we are moving or not.
     // then extract new contrast, before adding jitter based on quantile range of quest distribution
 
-    // use Block type as index for staircase
-    questStair[BlockType].UpdateQ(Qcontrast, tmpAcc);
+    if ( Qcontrast<=0 || Qcontrast==0.0f ) { // check if float is null
+            
+
+            Qcontrast = 0.4005f; print("contrast out of range, flooring");
+    }
+        print("BlockType:" + BlockType);
+        print("Qcontrast:" + Qcontrast);
+        print("tmpAcc: " + tmpAcc);
+        print("questStair[0]:" + questStair[0]);
+        print("questStair[1]:" + questStair[1]);
+
+        questStair[BlockType].UpdateQ(Qcontrast, tmpAcc);
 
     Qcontrast = (float)questStair[BlockType].Mean();
     // space about qmean, based on history of guesses:

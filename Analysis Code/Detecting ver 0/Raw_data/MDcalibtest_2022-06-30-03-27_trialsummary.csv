@@ -1,0 +1,7 @@
+date,participant,trial,block,trialID,isPrac,isStationary,nTarg,targOnset,targRT,targCor,targContrast,targContrastPosIdx,qStaircase,intActualE,degActualE,FA_rt,,
+2022-06-30,MDcalibtest,0,0,0,1,1,8,1.85262,2.169388,1,0.46,4,0,0,1.286488,
+2022-06-30,MDcalibtest,0,0,0,1,1,8,2.699696,3.06219,1,0.46,4,0,1,123.6077,
+2022-06-30,MDcalibtest,0,0,0,1,1,8,4.403339,4.787873,1,0.46,4,0,0,1.287248,3.964724,
+2022-06-30,MDcalibtest,0,0,0,1,1,8,5.247662,6.059834,1,0.46,4,0,0,0.8201992,3.964724,
+2022-06-30,MDcalibtest,0,0,0,1,1,8,6.147775,6.577796,1,0.46,4,0,0,0.7324861,3.964724,
+2022-06-30,MDcalibtest,0,0,0,1,1,8,7.032985,0,0,0.46,4,0,1,104.5261,3.964724,
