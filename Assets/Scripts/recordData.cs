@@ -114,11 +114,14 @@ public class recordData : MonoBehaviour
             Vector3 vectTargetRight = new Vector3(-vectTargetDiff.x, vectTargetDiff.y, vectTargetDiff.z);
 
 
-            Vector3 currentEyeOrigin_Global = new Vector3(-currentEyeOrigin.x, currentEyeOrigin.y, currentEyeOrigin.z);
-            Vector3 currentEyeDirection_Global = new Vector3(-currentEyeDirection.x, currentEyeDirection.y, currentEyeDirection.z);
+            //Vector3 currentEyeOrigin_Global = new Vector3(-currentEyeOrigin.x, currentEyeOrigin.y, currentEyeOrigin.z);
+            //Vector3 currentEyeDirection_Global = new Vector3(-currentEyeDirection.x, currentEyeDirection.y, currentEyeDirection.z);
            
-            currentEyeOrigin_Global = objHMD.transform.localToWorldMatrix.MultiplyVector(currentEyeOrigin_Global);
-            currentEyeDirection_Global = objHMD.transform.localToWorldMatrix.MultiplyVector(currentEyeDirection_Global);
+            //currentEyeOrigin_Global = objHMD.transform.localToWorldMatrix.MultiplyVector(currentEyeOrigin_Global);
+            //currentEyeDirection_Global = objHMD.transform.localToWorldMatrix.MultiplyVector(currentEyeDirection_Global);
+
+            Vector3 currentEyeDirection_Global = objHMD.transform.TransformDirection(-currentEyeDirection.x, currentEyeDirection.y, currentEyeDirection.z);
+            Vector3 currentEyeOrigin_Global = objHMD.transform.TransformPoint(-currentEyeOrigin.x, currentEyeOrigin.y, currentEyeOrigin.z);
 
 
 

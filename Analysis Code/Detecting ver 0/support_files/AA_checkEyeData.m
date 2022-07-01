@@ -14,9 +14,9 @@ pfols = dir([pwd filesep '*framebyframe.csv']);
 nsubs= length(pfols);
 tr= table([1:length(pfols)]',{pfols(:).name}' );
 disp(tr)
-
+%%
 % wrangle frame by frame.
-for ippant=1
+for ippant=3
 % cd(datadir)
     
     pfols = dir([pwd filesep '*framebyframe.csv']);
@@ -126,7 +126,7 @@ for ippant=1
 
 
 fontSize=10;
-for itrial = 22
+for itrial = 18
     
     trialTargPos = TargPos(itrial);
     trialEyePos = EyePos(itrial);    
@@ -154,47 +154,47 @@ for itrial = 22
     end
 end
 %%     %%
-% numberOfSteps = length(trialTargPos.X);
-% 
-% xy = zeros(numberOfSteps,2);
-% %
-% clf
-% plottimes =  [0,1,2,3,4,5,6,7,8];
-% texttimes = [2; dsearchn([TargState(itrial).times],  [1,2,3,4,5,6,7,8]')];
-% 
-% posData = {trialTargPos, trialEyePos, trialEyeDir};
-% useCols = {'b', 'k', 'm'};
-% for postoPlot=1:3
-%     subplot(3,1,postoPlot);
-%     pdata = posData{postoPlot};
-% ic=1;
-% for iframe = 2 : numberOfSteps
-% 	% Walk in the x direction.
-% 	
-% 	% Now plot the walk so far.
-% 	xCoords = pdata.Z(iframe-1:iframe);
-% 	yCoords = pdata.Y(iframe-1:iframe);
-%     if TargState(itrial).state(iframe)==1
-%         
-%         linespecs = [useCols{postoPlot} 'o-'];
-%         LineWidth = 3;
-%         
-%     else
-%         linespecs = [useCols{postoPlot} '.'];        
-%         LineWidth = 1;
-%     end
-%         
-% 	plot(xCoords, yCoords,  linespecs, 'LineWidth', LineWidth);
-% 	hold on;
-%     
-%     if ismember(iframe, texttimes)
-%         text(xCoords,yCoords, [num2str(plottimes(ic))]);
-%     ic=ic+1;    
-%     end
-% end %each frame
-% axis tight
-% end %datatype
-% %%
+numberOfSteps = length(trialTargPos.X);
+
+xy = zeros(numberOfSteps,2);
+%
+clf
+plottimes =  [0,1,2,3,4,5,6,7,8];
+texttimes = [2; dsearchn([TargState(itrial).times],  [1,2,3,4,5,6,7,8]')];
+
+posData = {trialTargPos, trialEyePos, trialEyeDir};
+useCols = {'b', 'k', 'm'};
+for postoPlot=[1,3]
+    subplot(3,1,postoPlot);
+    pdata = posData{postoPlot};
+ic=1;
+for iframe = 2 : numberOfSteps
+	% Walk in the x direction.
+	
+	% Now plot the walk so far.
+	xCoords = pdata.Z(iframe-1:iframe);
+	yCoords = pdata.Y(iframe-1:iframe);
+    if TargState(itrial).state(iframe)==1
+        
+        linespecs = [useCols{postoPlot} 'o-'];
+        LineWidth = 3;
+        
+    else
+        linespecs = [useCols{postoPlot} '.'];        
+        LineWidth = 1;
+    end
+        
+	plot(xCoords, yCoords,  linespecs, 'LineWidth', LineWidth);
+	hold on;
+    
+    if ismember(iframe, texttimes)
+        text(xCoords,yCoords, [num2str(plottimes(ic))]);
+    ic=ic+1;    
+    end
+end %each frame
+axis tight
+end %datatype
+%%
 
 end %itrial
 

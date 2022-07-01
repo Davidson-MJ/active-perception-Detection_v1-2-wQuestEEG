@@ -20,7 +20,7 @@ disp(tr)
 
 %
 %% Per csv file, import and wrangle into Matlab Structures, and data matrices:
-for ippant =1%:length(pfols)
+for ippant =2%:length(pfols)
   
 cd(datadir)
 pfols = dir([pwd filesep '*trialsummary.csv']);
@@ -190,14 +190,15 @@ filename = pfols(ippant).name;
 % figure()
 %%
 %% note that in contrast pos 0,1,2,3,4,5,6, [1,2], and [4,5] are equivalent.
-changeto_1= find(T.targContrastPosIdx==2);
-T.targContrastPosIdx(changeto_1)=1;
+% changeto_1= find(T.targContrastPosIdx==2);
+% T.targContrastPosIdx(changeto_1)=1;
 
-changeto_5= find(T.targContrastPosIdx==4);
-T.targContrastPosIdx(changeto_5)=5;
+% changeto_5= find(T.targContrastPosIdx==4);
+%%
+% T.targContrastPosIdx(changeto_5)=5;
 leg=[];
 %%
-clf
+
 
 for id=1:3
     switch id
