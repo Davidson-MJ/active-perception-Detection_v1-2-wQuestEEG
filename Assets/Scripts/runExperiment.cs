@@ -28,6 +28,7 @@ public class runExperiment : MonoBehaviour
     public bool isPractice = true; // determines walking guide motion (stationary during practice).
     public bool isStationary = true;
     public bool prepLSL = false;
+    public bool recordEEG = true;
     public bool isEyeTracked = true;
     private int npractrials = 1; // 0 : n practice trials before staircase is initiated.
     // flow managers
@@ -64,7 +65,7 @@ public class runExperiment : MonoBehaviour
     targetAppearance targetAppearance;
     myMathsMethods myMathsMethods;
     EyetrackProcesses EyetrackProcesses;
-
+    triggerHandler triggerHandler;
     // declare public Game Objects.
     public GameObject hmd, effector, SphereShader, redX, objSRanipal;
 
@@ -100,6 +101,8 @@ void Start()
     myMathsMethods = GetComponent<myMathsMethods>();
     showText = GameObject.Find("Instructions (TMP)").GetComponent<showText>();
     changeMat = GameObject.Find("directionCanvas").GetComponent<changeDirectionMaterial>();
+
+    triggerHandler = GameObject.Find("MBBTS Triggers").GetComponent<triggerHandler>();
     redX = GameObject.Find("RedX");
 
     EyetrackProcesses = GameObject.Find("SRanipal").GetComponent<EyetrackProcesses>();
@@ -207,7 +210,8 @@ private void Update()
     // check for startbuttons, but only if not in trial.
     if (!trialinProgress && !setXpos && viveInput.clickLeft && TrialCount < trialParams.nTrials)
     {
-        startTrial(); // starts coroutine, changes listeners, presets staircase.            
+            triggerHandler.send("5");
+            startTrial(); // starts coroutine, changes listeners, presets staircase.            
     }
 
 
@@ -221,13 +225,15 @@ private void Update()
     //// check for target detection.(indicated by  right trigger click).
     if (trialinProgress && viveInput.clickRight)
     {
+            triggerHandler.send("1");
         collectDetect(); // places RTs within an array. [ function will determine correct or no]
 
     }
     // If no response recorded by end of response window, update trial summary data accordingly:
     if (targetAppearance.processNoResponse)
     {
-        collectOmit();
+            triggerHandler.send("0");
+            collectOmit();
         targetAppearance.processNoResponse = false;
 
     }
