@@ -20,7 +20,8 @@ public class targetAppearance : MonoBehaviour
     trialParameters trialParams;
     //Staircase ppantStaircase;
     walkParameters motionParams;
-
+    // for recording EEG triggers
+    SerialController SerialController;
     private Color targColor;
     private void Start()
     {
@@ -28,6 +29,9 @@ public class targetAppearance : MonoBehaviour
         trialParams = GameObject.Find("scriptHolder").GetComponent<trialParameters>();
         //ppantStaircase = GameObject.Find("scriptHolder").GetComponent<Staircase>();
         motionParams = GameObject.Find("scriptHolder").GetComponent<walkParameters>();
+
+        SerialController = GameObject.Find("scriptHolder").GetComponent<SerialController>();
+
         rend = GetComponent<Renderer>(); // change colour of shade, not texture (separate sphere).
         processNoResponse = false;
         targColor = rend.material.color;
@@ -210,6 +214,13 @@ public class targetAppearance : MonoBehaviour
                         runExperiment.detectIndex = itargindx + 1; //  click responses collected in this response window will be 'correct'
                         runExperiment.hasResponded = false;  //switched if targ detected.
                         trialParams.trialD.targOnsetTime = runExperiment.trialTime;
+                        // also send trigger to eeg
+                        if (runExperiment.recordEEG)
+                        {
+                           
+                                SerialController.SendSerialMessage("T"); // target 1
+                           
+                        }
 
                         //how long to show target for?
                         yield return new WaitForSecondsRealtime(trialParams.targDurationsec);

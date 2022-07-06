@@ -29,7 +29,7 @@ public class runExperiment : MonoBehaviour
     public bool isStationary = true;
     public bool prepLSL = false;
     public bool recordEEG = true;
-    public bool isEyeTracked = true;
+    public bool isEyeTracked = false;
     private int npractrials = 1; // 0 : n practice trials before staircase is initiated.
     // flow managers
     public bool trialinProgress; // handles current state within experiment 
@@ -65,7 +65,7 @@ public class runExperiment : MonoBehaviour
     targetAppearance targetAppearance;
     myMathsMethods myMathsMethods;
     EyetrackProcesses EyetrackProcesses;
-    triggerHandler triggerHandler;
+    SerialController SerialController;
     // declare public Game Objects.
     public GameObject hmd, effector, SphereShader, redX, objSRanipal;
 
@@ -101,8 +101,7 @@ void Start()
     myMathsMethods = GetComponent<myMathsMethods>();
     showText = GameObject.Find("Instructions (TMP)").GetComponent<showText>();
     changeMat = GameObject.Find("directionCanvas").GetComponent<changeDirectionMaterial>();
-
-    triggerHandler = GameObject.Find("MBBTS Triggers").GetComponent<triggerHandler>();
+   
     redX = GameObject.Find("RedX");
 
     EyetrackProcesses = GameObject.Find("SRanipal").GetComponent<EyetrackProcesses>();
@@ -151,6 +150,11 @@ void Start()
         else
         {
             objSRanipal.SetActive(false);
+        }
+
+        if (recordEEG)
+        {
+            SerialController = GetComponent<SerialController>();
         }
     }
 
@@ -210,7 +214,7 @@ private void Update()
     // check for startbuttons, but only if not in trial.
     if (!trialinProgress && !setXpos && viveInput.clickLeft && TrialCount < trialParams.nTrials)
     {
-            triggerHandler.send("5");
+          
             startTrial(); // starts coroutine, changes listeners, presets staircase.            
     }
 
@@ -225,14 +229,13 @@ private void Update()
     //// check for target detection.(indicated by  right trigger click).
     if (trialinProgress && viveInput.clickRight)
     {
-            triggerHandler.send("1");
+           
         collectDetect(); // places RTs within an array. [ function will determine correct or no]
 
     }
     // If no response recorded by end of response window, update trial summary data accordingly:
     if (targetAppearance.processNoResponse)
     {
-            triggerHandler.send("0");
             collectOmit();
         targetAppearance.processNoResponse = false;
 
@@ -335,11 +338,9 @@ void CalibrateStartPos()
 
 private void startTrial()
 {
-   
-       
 
         // re-calibrate screen height to participants hmd:
-    walkParams.updateScreenHeight();
+        walkParams.updateScreenHeight();
 
 
     // clear previous trial info, reset, and assign from preallocated variables:
@@ -396,8 +397,12 @@ private void startTrial()
     }
 
 
+    if (recordEEG)
+    {
+            SerialController.SendSerialMessage("trialType:" + TrialType);
+    }
 
-    // define if within practice blocks
+        // define if within practice blocks
     if (trialParams.blockTypeArray[TrialCount, 0] < trialParams.nStaircaseBlocks)
     {
         // set for outside(BrownianMotion) listeners. When practice, motion guide is stationary.
@@ -420,9 +425,14 @@ private void startTrial()
 private void collectDetect()
 {
     //Record click - R click for target perceived present                       
-    if (viveInput.clickRight)
-    {
-        trialParams.trialD.clickOnsetTime = trialTime;
+    
+
+            if (recordEEG)
+            {
+                SerialController.SendSerialMessage("R1"); // response 1
+            }
+
+            trialParams.trialD.clickOnsetTime = trialTime;
         //determine if this RT was within response window of targ.
         // we have a listener in the coroutine (detectIndex). this determines whether RT was appropriate.
 
@@ -460,15 +470,18 @@ private void collectDetect()
             FA_withintrial.Add(trialTime); // append to the list (cleared at every new walk trial).               
             FAthistrial = true;
         }
-    }
+    
 }
 
 private void collectOmit() // only relevant to response window following targs.
 {
 
-
-    // Miss
-    trialParams.trialD.targCorrect = 0;
+        if (recordEEG)
+        {
+            SerialController.SendSerialMessage("R0"); // response 1
+        }
+        // Miss
+        trialParams.trialD.targCorrect = 0;
     trialParams.trialD.targResponse = 0;
     trialParams.trialD.targResponseTime = 0;
     trialParams.trialD.targContrast = Qcontrast;
