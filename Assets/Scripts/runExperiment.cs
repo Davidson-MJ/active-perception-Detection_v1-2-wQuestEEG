@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Collections;
 using UnityEngine.InputSystem;
-using LSL;
+//using LSL;
 
 /// <summary>
 ///  This script runs a  single target detection experiment,
@@ -29,7 +29,7 @@ public class runExperiment : MonoBehaviour
     public bool isStationary = true;
     public bool prepLSL = false;
     public bool recordEEG = true;
-    public bool isEyeTracked = false;
+    public bool isEyeTracked = true;
     private int npractrials = 1; // 0 : n practice trials before staircase is initiated.
     // flow managers
     public bool trialinProgress; // handles current state within experiment 
@@ -81,10 +81,10 @@ public class runExperiment : MonoBehaviour
 
     // prep an LSL stream:
 
-    string StreamName = "LSL4Unity";
-    string StreamType = "Markers";
-    private StreamOutlet outlet;
-    private string[] sample = { "" };
+    //string StreamName = "LSL4Unity";
+    //string StreamType = "Markers";
+    //private StreamOutlet outlet;
+    //private string[] sample = { "" };
     
 
 void Start()
@@ -132,16 +132,16 @@ void Start()
     contrastOptions = new float[7];
 
         // initialize LSL outlet"
-    if (prepLSL)
-    {
-        var hash = new Hash128();
-        hash.Append(StreamName);
-        hash.Append(StreamType);
-        hash.Append(gameObject.GetInstanceID());
-        // set up stream params (note this may need to change from string to float type.)
-        StreamInfo streamInfo = new StreamInfo(StreamName, StreamType, 1, LSL.LSL.IRREGULAR_RATE, channel_format_t.cf_string, hash.ToString());
-        outlet = new StreamOutlet(streamInfo);
-    }
+    //if (prepLSL)
+    //{
+    //    var hash = new Hash128();
+    //    hash.Append(StreamName);
+    //    hash.Append(StreamType);
+    //    hash.Append(gameObject.GetInstanceID());
+    //    // set up stream params (note this may need to change from string to float type.)
+    //    StreamInfo streamInfo = new StreamInfo(StreamName, StreamType, 1, LSL.LSL.IRREGULAR_RATE, channel_format_t.cf_string, hash.ToString());
+    //    outlet = new StreamOutlet(streamInfo);
+    //}
 
         if (isEyeTracked)
         {
@@ -389,12 +389,12 @@ private void startTrial()
     walkingGuide.walkMotion = walkingGuide.motion.start;
     walkingGuide.returnRotation = walkingGuide.motion.idle;
 
-    // mark trial start in LSL
-    if (prepLSL && outlet != null)
-    {
-        sample[0] = "trialType: " + TrialType;
-        outlet.push_sample(sample);
-    }
+    //// mark trial start in LSL
+    //if (prepLSL && outlet != null)
+    //{
+    //    sample[0] = "trialType: " + TrialType;
+    //    outlet.push_sample(sample);
+    //}
 
 
     if (recordEEG)

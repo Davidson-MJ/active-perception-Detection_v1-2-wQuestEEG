@@ -218,7 +218,7 @@ public class targetAppearance : MonoBehaviour
                         if (runExperiment.recordEEG)
                         {
                            
-                                SerialController.SendSerialMessage("T"); // target 1
+                                SerialController.SendSerialMessage("T"); // target presented
                            
                         }
 

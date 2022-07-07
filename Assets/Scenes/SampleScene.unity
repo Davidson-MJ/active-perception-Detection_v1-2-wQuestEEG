@@ -14975,7 +14975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1ee09535d8d81438bf87e9b2bbfcd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  participant: MD
+  participant: LB
   TrialCount: 0
   TrialType: 0
   BlockType: 0
@@ -14985,7 +14985,7 @@ MonoBehaviour:
   isStationary: 1
   prepLSL: 0
   recordEEG: 1
-  isEyeTracked: 0
+  isEyeTracked: 1
   trialinProgress: 0
   updateText: 0
   questready: 0

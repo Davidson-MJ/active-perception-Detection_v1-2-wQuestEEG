@@ -1,24 +1,27 @@
 % Detection experiment (contrast)
 %%  Import from csv. FramebyFrame, then summary data.
 
-%%%%%% QUEST DETECT version %%%%%%
+%%%%%% v3: QUEST w Eye and EEG version %%%%%%
 %frame by frame first:
 %Mac:
 % datadir='/Users/matthewdavidson/Documents/GitHub/active-perception-Detection_v1-1wQuest/Analysis Code/Detecting ver 0/Raw_data';
-%PC:
-datadir='C:\Users\User\Documents\matt\GitHub\active-perception-Detection_v1-1wQuest\Analysis Code\Detecting ver 0\Raw_data';
+%PC:d
+datadir='C:\Users\User\Documents\matt\GitHub\active-perception-Detection_v1-2-wQuestEEG\Analysis Code\Detecting ver 0\Raw_data';
 % laptop:
 % datadir='C:\Users\vrlab\Documents\GitHub\active-perception-Detection_v1-1wQuest\Analysis Code\Detecting ver 0\Raw_data';
+
+cd ../Processed_Data
+procdatadir = pwd; 
 
 cd(datadir)
 pfols = dir([pwd filesep '*framebyframe.csv']);
 nsubs= length(pfols);
-% show ppant numbers:
 
+% show ppant numbers: in command window
 tr= table([1:length(pfols)]',{pfols(:).name}' );
 disp(tr)
 %% Per csv file, import and wrangle into Matlab Structures, and data matrices:
-for ippant =3%1:nsubs
+for ippant =1%1:nsubs
     cd(datadir)
     
     pfols = dir([pwd filesep '*framebyframe.csv']);
@@ -31,28 +34,27 @@ for ippant =3%1:nsubs
     
    
     savename = [subjID '_summary_data'];
-    
-%     %query whether pos data job has been done (is in list of variables
-%     %saved)
-%     cd('ProcessedData')
-%     listOfVariables = who('-file', [savename '.mat']);
-%     if ~ismember('HeadPos', listOfVariables)  
-%        % if not done, load and save frame x frame data.
-%     % simple extract of positions over time.
-%     
+ 
+    %query whether we want to recompute frame x frame (unlikely).
+    cd(procdatadir);
+    if exist(savename, 'file')
+        disp(['frame x frame alread saved for ' subjID]);
+    else
     %read table
+    cd(datadir);
     opts = detectImportOptions(filename,'NumHeaderLines',0);
+    disp(['reading large frame x frame file now...']);
     T = readtable(filename,opts);
     ppant = T.participant{1};
     disp(['Preparing participant ' ppant]);
     
-    [TargPos, HeadPos, TargState, clickState] = deal([]);
+    [TargPos, HeadPos, TargState, ClickState, EyePos, EyeDir] = deal([]);
     
     %% use logical indexing to find all relevant info (in cells)
     posData = T.position;
     clickData = T.clickstate;
     targStateData= T.targState;
-    
+  
     objs = T.trackedObject;
     axes= T.axis;
     Trials =T.trial;
@@ -60,79 +62,72 @@ for ippant =3%1:nsubs
     
     targ_rows = find(contains(objs, 'target'));
     head_rows = find(contains(objs, 'head'));
+    eyePos_rows = find(contains(objs, 'gazeOrigin'));   
+    eyeDir_rows = find(contains(objs, 'gazeDirection'));
    
     Xpos = find(contains(axes, 'x'));
     Ypos  = find(contains(axes, 'y'));
     Zpos = find(contains(axes, 'z'));
     
-    %% now find the intersect of thse indices, to fill the data.
-    hx = intersect(head_rows, Xpos);
-    hy = intersect(head_rows, Ypos);
-    hz = intersect(head_rows, Zpos);
-    
-    %Targ (XYZ)
-    tx = intersect(targ_rows, Xpos);
-    ty = intersect(targ_rows, Ypos);
-    tz = intersect(targ_rows, Zpos);
-    
-    %% further store by trials (walking laps).
-    vec_lengths=[];
-    for itrial = 1:length(unique(Trials))
+    userows = {head_rows, targ_rows, eyePos_rows, eyeDir_rows};
+    for idatatype = 1:length(userows)
         
-        trial_rows = find(Trials==itrial-1); % indexing from 0 in Unity
+        %% per type, find the intersect of thse indices, to fill the data.
+        datarows = userows{idatatype};
+        Dx = intersect(datarows, Xpos);
+        Dy = intersect(datarows, Ypos);
+        Dz = intersect(datarows, Zpos);
         
-        trial_times = Times(intersect(hx, trial_rows));
-        %Head first (X Y Z)
-        HeadPos(itrial).X = posData(intersect(hx, trial_rows));
-        HeadPos(itrial).Y = posData(intersect(hy, trial_rows));
-        HeadPos(itrial).Z = posData(intersect(hz, trial_rows));
-        %store time (sec) for matching with summary data:
-        HeadPos(itrial).times = trial_times;
+        %% further store by trials (walking laps).
+        vec_lengths=[];
         
-        HeadPos(itrial).isPrac = unique(T.isPrac(trial_rows));        
-        HeadPos(itrial).isStationary = unique(T.isStationary(trial_rows));
+        DataPos=[]; % will be renamed below.
         
+        for itrial = 1:length(unique(Trials))
+            
+            trial_rows = find(Trials==itrial-1); % indexing from 0 in Unity
+            
+            DataPos(itrial).X = posData(intersect(Dx, trial_rows));
+            DataPos(itrial).Y = posData(intersect(Dy, trial_rows));
+            DataPos(itrial).Z = posData(intersect(Dz, trial_rows));
+            
+            % only need to perform once, but also capture the targstate and
+            % click state, and times on each trial
+            
+            trial_times = Times(intersect(Dx, trial_rows));
+            
+            if idatatype==1
+                trialInfo(itrial).targstate= targStateData(intersect(Dx, trial_rows));
+                trialInfo(itrial).clickstate= clickData(intersect(Dx, trial_rows));
+                trialInfo(itrial).times = trial_times;                
+            end
+        end
         
-        
-        TargPos(itrial).X = posData(intersect(tx, trial_rows));
-        TargPos(itrial).Y = posData(intersect(ty, trial_rows));
-        TargPos(itrial).Z = posData(intersect(tz, trial_rows));        
-         TargPos(itrial).times = trial_times;
-        TargPos(itrial).isPrac = unique(T.isPrac(trial_rows));        
-        TargPos(itrial).isStationary = unique(T.isStationary(trial_rows));
-        
-        
-        % because the XYZ have the same time stamp, collect click and targ
-        % state as well.
-        % note varying lengths some trials, so store in structure:
-        TargState(itrial).state = targStateData(intersect(hx, trial_rows));
-        TargState(itrial).times = trial_times;
-        clickState(itrial).state = clickData(intersect(hx, trial_rows));
-        clickState(itrial).times = trial_times;
-        
-        
-        
-    end
-    
+        % save per datatype:
+        switch idatatype
+            case 1
+                HeadPos = DataPos;
+            case 2
+                TargPos = DataPos;
+            case 3
+                EyePos = DataPos;
+            case 4
+                EyeDir= DataPos;
+                
+        end
+    end % idatatype
     
     disp(['Saving position data split by trials... ' subjID]);
-    rawFramedata_table = T;
-    cd([datadir filesep 'ProcessedData'])
-%     try save(savename, 'TargPos', 'HeadPos', 'TargState', 'clickState', 'subjID', 'ppant', '-append');
-%     catch
-        save(savename, 'TargPos', 'HeadPos', 'TargState', 'clickState', 'subjID', 'ppant');
-%     end
-    
-%     else
-%         disp(['skipping frame by frame save for ' subjID]);
-%         % actually need to load the HeadPos and clickState for summary jobs
-%         % below:
-%         load(savename, 'HeadPos', 'clickState');
-%     end % query frame x frame job
+    cd(procdatadir)
+    try save(savename, 'TargPos', 'HeadPos', 'EyePos', 'EyeDir', 'TargState', 'clickState', 'subjID', 'ppant', '-append');
+    catch
+        save(savename, 'TargPos', 'HeadPos', 'EyePos', 'EyeDir','TargState', 'ClickState', 'subjID', 'ppant');
+    end
+  
+    end
 %
 %% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ now summary data
-
-cd(datadir)
+  cd(datadir)
 pfols = dir([pwd filesep '*trialsummary.csv']);
 nsubs= length(pfols);
 %
@@ -154,39 +149,26 @@ filename = pfols(ippant).name;
     practIndex = find(T.isPrac ==1);
     npracTrials = (T.trial(practIndex(end)) +1);
     disp([subjID ' has ' num2str(npracTrials) ' practice trials']);
-    %check if contrast info is saved (not the case for some pilots).
-    Exist_Column = strcmp('targContrast',T.Properties.VariableNames);
-    val = Exist_Column(Exist_Column==1);
-    if val
-        contrastValues= unique(T.targContrast(practIndex(end)+2:end));
-        if length(contrastValues)~=7
-            error(['incorret contrast information, post calibration for ' subjID])
-        end
-        hasContrast=1;
-    end
     
     %extract the rows in our table, with relevant data for assessing
     %calibration
     nstairs = unique(T.qStaircase(T.qStaircase >0));
     calibAcc=[];
-    calibContrast=[];
     for iqstair=1:length(nstairs) % check all staircases.
         tmpstair = nstairs(iqstair);
         qstairtrials= find(T.qStaircase==tmpstair);
         calibAxis = intersect(qstairtrials, practIndex);
         
-        %calculate accuracy:
-        calibData = T.targCor(calibAxis);
-        
+        %calculate accuracy (running accuracy).
+        calibData = T.targCor(calibAxis);        
         for itarg=1:length(calibData)
             tmpD = calibData(1:itarg);
             calibAcc(iqstair).d(itarg) = sum(tmpD)/length(tmpD);
         end
-        %retain contrast values:
-        calibContrast(iqstair).c = T.targContrast(calibAxis);
+       
     end
     
-    %% FAlse alarms: repair FA data in table    
+    %% FAlse alarms: repair FA data in table (happens if we have multiple FAs, extra columns are added, which need to be collapsed.
     ColIndex = find(strcmp(T.Properties.VariableNames, 'FA_rt'), 1);
     %repair string columns:
     for ix=ColIndex:size(T,2)
@@ -229,8 +211,8 @@ filename = pfols(ippant).name;
         
         % seems some FA are missing, do a quick check to see if 
          % any extra in the clickdata.
-        clks= find(clickState(itrial).state);
-        clksTs= HeadPos(itrial).times(clks);
+        clks= find(ClickState(itrial).state);
+        clksTs= DataPos(itrial).times(clks);
          if length(clksTs) ~= length(tRTs) 
              %FA present
              %find the outlier
@@ -317,8 +299,8 @@ filename = pfols(ippant).name;
        
         trial_TargetSummary(itrial).FalseAlarms= tFAs;
         
-        trial_TargetSummary(itrial).isPrac= HeadPos(itrial).isPrac;        
-        trial_TargetSummary(itrial).isStationary= HeadPos(itrial).isStationary;
+        trial_TargetSummary(itrial).isPrac= DataPos(itrial).isPrac;        
+        trial_TargetSummary(itrial).isStationary= DataPos(itrial).isStationary;
         
           %also convert to index (in range 1:7).
       
