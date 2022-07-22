@@ -31,6 +31,9 @@ public class runExperiment : MonoBehaviour
     public bool recordEEG = true;
     public bool isEyeTracked = true;
     private int npractrials = 1; // 0 : n practice trials before staircase is initiated.
+
+    public bool invisiScreen = true; // toggle for hiding the hoverscreen (adjusts alpha)
+
     // flow managers
     public bool trialinProgress; // handles current state within experiment 
     private bool FAthistrial; // listen for FA in no targ trials, pass to update staircase/recording data.
@@ -67,7 +70,7 @@ public class runExperiment : MonoBehaviour
     EyetrackProcesses EyetrackProcesses;
     SerialController SerialController;
     // declare public Game Objects.
-    public GameObject hmd, effector, SphereShader, redX, objSRanipal;
+    public GameObject hmd, effector, SphereShader, redX, objSRanipal, hovScreen;
 
 
     //For quest:
@@ -155,6 +158,17 @@ void Start()
         if (recordEEG)
         {
             SerialController = GetComponent<SerialController>();
+        }
+
+
+        if (invisiScreen) // get gameObject of screen, set alpha to zero. (will keep pos tracking running)
+        {
+           hovScreen= GameObject.Find("TargetCylinder");
+           //adjust alpha to zero.
+           Color color = hovScreen.color;
+           color.a =0;
+           hovScreen.color = color;
+           
         }
     }
 
