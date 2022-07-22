@@ -28,7 +28,7 @@ public class runExperiment : MonoBehaviour
     public bool isPractice = true; // determines walking guide motion (stationary during practice).
     public bool isStationary = true;
     public bool prepLSL = false;
-    public bool recordEEG = true;
+    public bool recordEEG = false;
     public bool isEyeTracked = true;
     private int npractrials = 1; // 0 : n practice trials before staircase is initiated.
     // flow managers
@@ -223,7 +223,6 @@ private void Update()
     if (trialinProgress)
     {
         trialTime += Time.deltaTime;
-        //print("Trial Time: " + trialTime);
     }
 
     //// check for target detection.(indicated by  right trigger click).

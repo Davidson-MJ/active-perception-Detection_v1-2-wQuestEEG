@@ -55,6 +55,14 @@ public class SerialController : MonoBehaviour
     protected Thread thread;
     protected SerialThreadLines serialThread;
 
+    runExperiment runExp;
+    private void Start()
+    {
+
+        // determine if recordEEG session.
+       runExp = GetComponent<runExperiment>();
+
+    }
 
     // ------------------------------------------------------------------------
     // Invoked whenever the SerialController gameobject is activated.
@@ -63,12 +71,16 @@ public class SerialController : MonoBehaviour
     // ------------------------------------------------------------------------
     void OnEnable()
     {
-        serialThread = new SerialThreadLines(portName, 
-                                             baudRate, 
-                                             reconnectionDelay,
-                                             maxUnreadMessages);
-        thread = new Thread(new ThreadStart(serialThread.RunForever));
-        thread.Start();
+
+        
+
+            serialThread = new SerialThreadLines(portName,
+                                                 baudRate,
+                                                 reconnectionDelay,
+                                                 maxUnreadMessages);
+            thread = new Thread(new ThreadStart(serialThread.RunForever));
+            thread.Start();
+        
     }
 
     // ------------------------------------------------------------------------
@@ -77,26 +89,28 @@ public class SerialController : MonoBehaviour
     // ------------------------------------------------------------------------
     void OnDisable()
     {
-        // If there is a user-defined tear-down function, execute it before
-        // closing the underlying COM port.
-        if (userDefinedTearDownFunction != null)
-            userDefinedTearDownFunction();
+       
+            // If there is a user-defined tear-down function, execute it before
+            // closing the underlying COM port.
+            if (userDefinedTearDownFunction != null)
+                userDefinedTearDownFunction();
 
-        // The serialThread reference should never be null at this point,
-        // unless an Exception happened in the OnEnable(), in which case I've
-        // no idea what face Unity will make.
-        if (serialThread != null)
-        {
-            serialThread.RequestStop();
-            serialThread = null;
-        }
+            // The serialThread reference should never be null at this point,
+            // unless an Exception happened in the OnEnable(), in which case I've
+            // no idea what face Unity will make.
+            if (serialThread != null)
+            {
+                serialThread.RequestStop();
+                serialThread = null;
+            }
 
-        // This reference shouldn't be null at this point anyway.
-        if (thread != null)
-        {
-            thread.Join();
-            thread = null;
-        }
+            // This reference shouldn't be null at this point anyway.
+            if (thread != null)
+            {
+                thread.Join();
+                thread = null;
+            }
+        
     }
 
     // ------------------------------------------------------------------------
@@ -107,23 +121,25 @@ public class SerialController : MonoBehaviour
     // ------------------------------------------------------------------------
     void Update()
     {
-        // If the user prefers to poll the messages instead of receiving them
-        // via SendMessage, then the message listener should be null.
-        if (messageListener == null)
-            return;
+        
+            // If the user prefers to poll the messages instead of receiving them
+            // via SendMessage, then the message listener should be null.
+            if (messageListener == null)
+                return;
 
-        // Read the next message from the queue
-        string message = (string)serialThread.ReadMessage();
-        if (message == null)
-            return;
+            // Read the next message from the queue
+            string message = (string)serialThread.ReadMessage();
+            if (message == null)
+                return;
 
-        // Check if the message is plain data or a connect/disconnect event.
-        if (ReferenceEquals(message, SERIAL_DEVICE_CONNECTED))
-            messageListener.SendMessage("OnConnectionEvent", true);
-        else if (ReferenceEquals(message, SERIAL_DEVICE_DISCONNECTED))
-            messageListener.SendMessage("OnConnectionEvent", false);
-        else
-            messageListener.SendMessage("OnMessageArrived", message);
+            // Check if the message is plain data or a connect/disconnect event.
+            if (ReferenceEquals(message, SERIAL_DEVICE_CONNECTED))
+                messageListener.SendMessage("OnConnectionEvent", true);
+            else if (ReferenceEquals(message, SERIAL_DEVICE_DISCONNECTED))
+                messageListener.SendMessage("OnConnectionEvent", false);
+            else
+                messageListener.SendMessage("OnMessageArrived", message);
+        
     }
 
     // ------------------------------------------------------------------------
