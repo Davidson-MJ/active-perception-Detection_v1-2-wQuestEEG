@@ -106,6 +106,8 @@ void Start()
     changeMat = GameObject.Find("directionCanvas").GetComponent<changeDirectionMaterial>();
    
     redX = GameObject.Find("RedX");
+    hovScreen= GameObject.Find("TargetCylinder");
+
 
     EyetrackProcesses = GameObject.Find("SRanipal").GetComponent<EyetrackProcesses>();
 
@@ -161,15 +163,6 @@ void Start()
         }
 
 
-        if (invisiScreen) // get gameObject of screen, set alpha to zero. (will keep pos tracking running)
-        {
-           hovScreen= GameObject.Find("TargetCylinder");
-           //adjust alpha to zero.
-           Color color = hovScreen.color;
-           color.a =0;
-           hovScreen.color = color;
-           
-        }
     }
 
 
@@ -429,9 +422,19 @@ private void startTrial()
         changeMat.update(usematerial); //usematerial determined by text instructions (stop or go arrow).
     }
 
+
+    
+        if (invisiScreen) // get gameObject of screen, set alpha to zero. (will keep pos tracking running)
+        {
+           toggleHovScreen(0); // 0 or 1 sets alpha. 
+           
+        }
+
     //start coroutine to control target onset and target behaviour:
     print("Starting Trial " + (TrialCount + 1) + " of " + trialParams.nTrials + ", " + TrialType + " to detect");
     targetAppearance.startSequence(); // co routine in another script.
+
+
 
     }
 
@@ -693,8 +696,23 @@ void trialPackdown()
 
     // set redX to active:
     redX.SetActive(true);
+
+    if (invisiScreen) // get gameObject of screen, set alpha to zero. (will keep pos tracking running)
+        {
+           toggleHovScreen(1); // 0 or 1 sets alpha. 
+           
+        }
 }
 
+void toggleHovScreen(int tog)
+ {
+
+
+     //adjust alpha to zero.
+           Color color = hovScreen.color;
+           color.a =tog;
+           hovScreen.color = color;
+ }
 
 }
 
