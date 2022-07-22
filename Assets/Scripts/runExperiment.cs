@@ -31,6 +31,9 @@ public class runExperiment : MonoBehaviour
     public bool recordEEG = false;
     public bool isEyeTracked = true;
     private int npractrials = 1; // 0 : n practice trials before staircase is initiated.
+
+    public bool invisiScreen = true; // toggle for hiding the hoverscreen (adjusts alpha)
+
     // flow managers
     public bool trialinProgress; // handles current state within experiment 
     private bool FAthistrial; // listen for FA in no targ trials, pass to update staircase/recording data.
@@ -67,7 +70,7 @@ public class runExperiment : MonoBehaviour
     EyetrackProcesses EyetrackProcesses;
     SerialController SerialController;
     // declare public Game Objects.
-    public GameObject hmd, effector, SphereShader, redX, objSRanipal;
+    public GameObject hmd, effector, SphereShader, redX, objSRanipal, hovScreen;
 
 
     //For quest:
@@ -103,6 +106,8 @@ void Start()
     changeMat = GameObject.Find("directionCanvas").GetComponent<changeDirectionMaterial>();
    
     redX = GameObject.Find("RedX");
+    hovScreen= GameObject.Find("TargetCylinder");
+
 
     EyetrackProcesses = GameObject.Find("SRanipal").GetComponent<EyetrackProcesses>();
 
@@ -156,6 +161,8 @@ void Start()
         {
             SerialController = GetComponent<SerialController>();
         }
+
+
     }
 
 
@@ -414,9 +421,19 @@ private void startTrial()
         changeMat.update(usematerial); //usematerial determined by text instructions (stop or go arrow).
     }
 
+
+    
+        if (invisiScreen) // get gameObject of screen, set alpha to zero. (will keep pos tracking running)
+        {
+           toggleHovScreen(0); // 0 or 1 sets alpha. 
+           
+        }
+
     //start coroutine to control target onset and target behaviour:
     print("Starting Trial " + (TrialCount + 1) + " of " + trialParams.nTrials + ", " + TrialType + " to detect");
     targetAppearance.startSequence(); // co routine in another script.
+
+
 
     }
 
@@ -678,8 +695,23 @@ void trialPackdown()
 
     // set redX to active:
     redX.SetActive(true);
+
+    if (invisiScreen) // get gameObject of screen, set alpha to zero. (will keep pos tracking running)
+        {
+           toggleHovScreen(1); // 0 or 1 sets alpha. 
+           
+        }
 }
 
+void toggleHovScreen(int tog)
+ {
+
+
+     //adjust alpha to zero.
+           Color color = hovScreen.color;
+           color.a =tog;
+           hovScreen.color = color;
+ }
 
 }
 
