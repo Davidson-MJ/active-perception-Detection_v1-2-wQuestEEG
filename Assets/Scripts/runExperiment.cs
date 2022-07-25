@@ -19,42 +19,56 @@ public class runExperiment : MonoBehaviour
 {
 
     // basic experiment structure/ parameters to toggle.
+
+    [Header("Experiment")]
     public string participant;
     public int TrialCount; //n walk trajectories
-    public int TrialType;  // n targs absent, n present
-    public int BlockType; // walking, stationary (int)
-    public int targCount; // targs presented (acculative), used to track data.
+
+    [Header("User Input")]
+    public bool forceHeightCalibration = false;
     public bool forceEyeCalibration = false;
-    public bool isPractice = true; // determines walking guide motion (stationary during practice).
-    public bool isStationary = true;
-    public bool prepLSL = false;
     public bool recordEEG = true;
+    public bool invisiScreen = true; // toggle for hiding the hoverscreen (changes location to out-of-sight)
     public bool isEyeTracked = true;
-    private int npractrials = 1; // 0 : n practice trials before staircase is initiated.
 
-    public bool invisiScreen = true; // toggle for hiding the hoverscreen (adjusts alpha)
+    [Header("GObjs:")]
+    public GameObject redX; // adjust walk based on location
+    public GameObject objSRanipal; // for eyetracking
+    public GameObject hovScreen; // toggle height.
 
-    // flow managers
-    public bool trialinProgress; // handles current state within experiment 
-    private bool FAthistrial; // listen for FA in no targ trials, pass to update staircase/recording data.
-    private bool SetUpSession; // for alignment of walking space.
-    private int usematerial;  // change walk image (stop sign and arrows).
-    private int useStair; // we have (up to)  3 staircases running to see if they converge.
-    public bool updateText;
-    private bool setXpos;
-    public bool questready; // boool to switch quest params on.
+    [HideInInspector]
+    public bool isPractice, isStationary, collectTrialSummary, hasResponded, trialinProgress, questready;
+
+    //public bool collectTrialSummary; // passed to recordData.
+    //public bool hasResponded; //listener for trigger responses after target onset < respone Window.
+    // rest self explanatory.
+
+    [HideInInspector]
+    public float trialTime;
+    // clock within trial time, for RT analysis.
+
+    [HideInInspector]
+    public List<float> FA_withintrial = new List<float>();
+    // collect RT of FA within each trial (wipes every trial) passed to RecordData.
+
+    [HideInInspector]
+    public int targState, detectIndex, pauseRW;
+    //public int targState; // targ currently on screen, used to synchron recordings in recordData (frame by frame).
+    //public int detectIndex; // index to allocate response to correct target within walk.
+    //public int pauseRW; // used to pause the RW of a target while flash is being presented.
+    // within script flow managers:
+
+    int npractrials = 1; // 0 : n practice trials before staircase is initiated.
+    int TrialType;  // n targs absent, n present
+    int BlockType; // walking, stationary (int)
+    int usematerial;  // change walk image (stop sign and arrows).
+    int useStair; // we have (up to)  3 staircases running to see if they converge.
+    bool FAthistrial; // listen for FA in no targ trials, pass to update staircase/recording data.
+    bool SetUpSession; // for alignment of walking space.
+    bool updateText;
+    bool setXpos;    
     int indexRandom; // index to select from contrast jitters within trial sequenece.
 
-    // passed to other scripts (couroutine, record data etc).
-    public bool collectTrialSummary; // passed to recordData.
-    public float trialTime; // clock within trial time, for RT analysis.
-    public int targState; // targ currently on screen, used to synchron recordings in recordData (frame by frame).
-    public int detectIndex; // index to allocate response to correct target within walk.
-    public int pauseRW; // used to pause the RW of a target while flash is being presented.
-    public bool hasResponded; //listener for trigger responses after target onset < respone Window.
-
-    //trial  
-    public List<float> FA_withintrial = new List<float>(); // collect RT of FA within each trial (wipes every trial) passed to RecordData.
 
     // speak to:
     ViveInput viveInput;
@@ -70,16 +84,18 @@ public class runExperiment : MonoBehaviour
     EyetrackProcesses EyetrackProcesses;
     SerialController SerialController;
     // declare public Game Objects.
-    public GameObject hmd, effector, SphereShader, redX, objSRanipal, hovScreen;
-    Vector3 origPoshovScreen;
 
+    
     //For quest:
-    public QuestParam questP;
-    //public QuestStaircase[] questStair, questStair2;
+    [HideInInspector]
+    public QuestParam questP; // note: designate as public to avoid overwriting staircase upon forcedEye recalibration.
     QuestStaircase[] questStair;
 
-    [SerializeField] [ReadOnly] private float Qcontrast, Qlowquantile; // quest mean , and lower quantile for each iteration
-    public float[] contrastOptions;
+
+
+    [Header("current Qcontrast:")]
+    [SerializeField] [ReadOnly] private float Qcontrast;
+    float[] contrastOptions;
 
 
     // prep an LSL stream:
@@ -120,7 +136,6 @@ public class runExperiment : MonoBehaviour
 
         //flow managers
         TrialCount = 0;
-        targCount = 0;
         trialinProgress = false;
         SetUpSession = true;
         collectTrialSummary = false; // send info after each target to be written to a csv file
@@ -191,15 +206,14 @@ public class runExperiment : MonoBehaviour
         if (forceEyeCalibration)
         {
             EyetrackProcesses.eyeStartup();
-
             forceEyeCalibration = false;
-            // if all else fails.
-            //for (int i = 0; i < 2; i++)
-            //{
-            //    questStair[i] = GetComponent<QuestStaircase>();
-            //}
-            //InitQuestParams(Qcontrast);
+        }
 
+        // check if eyeCalibration needs to be redone (bool state toggled in inspector window only).
+        if (forceHeightCalibration)
+        {
+            walkParams.updateScreenHeight();
+            forceHeightCalibration = false;
         }
 
         if (updateText) // don't access method every frame, just at block end.
@@ -220,7 +234,9 @@ public class runExperiment : MonoBehaviour
         }
 
         // check for startbuttons, but only if not in trial.
-        if (!trialinProgress && !setXpos && viveInput.clickLeft && TrialCount < trialParams.nTrials)
+        if (!trialinProgress && !setXpos && TrialCount < trialParams.nTrials && viveInput.clickLeft)
+        //if (!trialinProgress && !setXpos  && TrialCount < trialParams.nTrials && Input.GetKeyDown(KeyCode.Space))
+
         {
 
             startTrial(); // starts coroutine, changes listeners, presets staircase.            
@@ -235,6 +251,8 @@ public class runExperiment : MonoBehaviour
 
         //// check for target detection.(indicated by  right trigger click).
         if (trialinProgress && viveInput.clickRight)
+        //if (!trialinProgress && !setXpos  && TrialCount < trialParams.nTrials && Input.GetKeyDown(KeyCode.T))
+
         {
 
             collectDetect(); // places RTs within an array. [ function will determine correct or no]
@@ -369,16 +387,12 @@ public class runExperiment : MonoBehaviour
         // query if stationary or not.
         isStationary = BlockType == 0 ? true : false; // 0 and 1 (in BlockType) corresponds to stationary or moving)
 
-        // add to trialD for recordData.cs
+        // add to public struct trialD for recordData.cs and other scripts
         trialParams.trialD.trialNumber = TrialCount;
         trialParams.trialD.blockID = trialParams.blockTypeArray[TrialCount, 0];
         trialParams.trialD.trialID = trialParams.blockTypeArray[TrialCount, 1];
         trialParams.trialD.trialType = TrialType; //  
-
-
-        //store bool as int
-        float fStat = isStationary ? 1 : 0;
-        trialParams.trialD.isStationary = fStat;
+        trialParams.trialD.isStationary = isStationary;
 
         BrownianMotion.transform.localPosition = walkParams.cubeOrigin;
         BrownianMotion.origin = walkParams.cubeOrigin;
@@ -545,11 +559,11 @@ public class runExperiment : MonoBehaviour
 
             Qcontrast = 0.4005f; print("contrast out of range, flooring");
         }
-        print("BlockType:" + BlockType);
-        print("Qcontrast:" + Qcontrast);
-        print("tmpAcc: " + tmpAcc);
-        print("questStair[0]:" + questStair[0]);
-        print("questStair[1]:" + questStair[1]);
+        //print("BlockType:" + BlockType);
+        //print("Qcontrast:" + Qcontrast);
+        //print("tmpAcc: " + tmpAcc);
+        //print("questStair[0]:" + questStair[0]);
+        //print("questStair[1]:" + questStair[1]);
 
         questStair[BlockType].UpdateQ(Qcontrast, tmpAcc);
 
@@ -593,8 +607,8 @@ public class runExperiment : MonoBehaviour
         // store the trial/target params for offline analysis.
         trialParams.trialD.stairCase = BlockType;
 
-        print("Using staircase " + BlockType);
-        print("using index " + indexRandom);
+        //print("Using staircase " + BlockType);
+        //print("using index " + indexRandom);
         print("Contrast is : " + Qcontrast);
     }
 
@@ -713,17 +727,16 @@ public class runExperiment : MonoBehaviour
     void toggleHovScreen(bool tog)
     {
 
-        if (tog)
+        if (tog) // move the screen out of eye line.
         {
             Vector3 hideS = new Vector3(0, 5, 0);
             hovScreen.transform.position = hideS;
         }
-        else if (!tog)
+        else if (!tog) // show again:
         {
 
-            //Vector3 showS = new Vector3(0, 1.4f, 0);
-            //hovScreen.transform.position = showS;
-
+            
+            CalibrateStartPos();
 
         }
 

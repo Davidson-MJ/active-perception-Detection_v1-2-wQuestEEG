@@ -64,7 +64,14 @@ public class recordData : MonoBehaviour
         VisualCalc = GetComponent<VisualCalc>();       
         EyetrackProcesses = GameObject.Find("SRanipal").GetComponent<EyetrackProcesses>();
 
-        outputFolder = "C:/Users/User/Documents/matt/GitHub/active-perception-Detection_v1-2-wQuestEEG/Analysis Code/Detecting ver 0/Raw_data/";
+        if (runExperiment.invisiScreen)
+        {
+            outputFolder = "C:/Users/User/Documents/matt/GitHub/active-perception-Detection_v1-2-wQuestEEG/Assets/Data/taskfree-EEG/";
+        } else
+        {
+            outputFolder = "C:/Users/User/Documents/matt/GitHub/active-perception-Detection_v1-2-wQuestEEG/Analysis Code/Detecting ver 0/Raw_data/";
+        }
+        
 
         if (runExperiment.isEyeTracked)
         {
@@ -163,7 +170,7 @@ public class recordData : MonoBehaviour
             }
 
             // convert bools to ints.
-            int testStat = runExperiment.isStationary ? 1 : 0;
+            int testStat = trialParameters.trialD.isStationary ? 1 : 0;
 
 
             for (int j = 0; j < timePointPosition.Length; j++)

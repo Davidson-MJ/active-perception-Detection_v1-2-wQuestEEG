@@ -9,65 +9,69 @@ using UnityEngine;
 /// </summary>
 public class trialParameters : MonoBehaviour
 {
-    // predefine the stimulus parameters to be used on each trial, that are not updated based on staircase.
+    //Update all on Start();
 
-    // within trial data params and storage [ move to scriptable object?]
+    [HideInInspector]
+    public float preTrialsec, responseWindow, targDurationsec, minITI, trialDur, nTrials, targetAlpha;
 
-    public float preTrialsec = 0.5f; // buffer for no targ onset. (1 step)
-    public float responseWindow = 0.8f; // this is the response window to record detection (after target onset).
-    public float targDurationsec = 0.015f; //  sec
-    public float minITI; //response window + targDursec
-
-    // to be filled on Start():
-    private float trialDur;
-    public float nTrials;
+    [Header("Experiment Protocol:")]
     public int nBlocks;
-    public int ntrialsperBlock; // 2 block types (stationary and walking).
+    public int ntrialsperBlock;
     public int nStaircaseBlocks;
-    public int nRegularBlocks;
+    public int nRegularBlocks; 
+
 
     private float nUniqueConditions;
     private int trialsperCondition; // how many times can we repeat a target type (nTargs presented)
-    
+
+    //[Hide diff types of arrays from inspector]
     public int[] trialTypeArray; // namount targs presented each walk
+    [HideInInspector]
     public int[,] blockTypeArray; //nTrials x 3 (block, trialID, type)
+
+    [HideInInspector]
     public float[] targRange;
-    private int[] targsPresented; // for the A19 walk space, set per trial.
-    private int[] blockTypelist;
-    public float[] prevCalibContrast; // only used if there was a crash / restarting without staircase:
-                                    // import other settings:
-    walkParameters walkParameters;
+
+    [HideInInspector]
+    public int[] blockTypelist;
+    private int[] targsPresented; 
+
+    
+   walkParameters walkParameters;
    runExperiment runExperiment;
 
 
     [System.Serializable]
     public struct trialData
     {
-        public float trialNumber, blockID, trialID, isStationary, trialType, targContrast, targContrastPosIdx, targOnsetTime,
-            clickOnsetTime, targResponse, targResponseTime, targCorrect, stairCase, degExperimentE, degPracticalE, intPracticalE; 
-        
+        public float trialNumber, blockID, trialID, trialType, targContrast, targContrastPosIdx, targOnsetTime,
+            clickOnsetTime, targResponse, targResponseTime, targCorrect, stairCase, degExperimentE, degPracticalE, intPracticalE;
+        public bool isStationary;
+
+
     }
 
+    [HideInInspector]
     public trialData trialD;
 
     // create public lists of for updating in runExperiment, read by RecordData 
-
-    public List<string> trialTypeList = new List<string>(); // populated below.     
+    [HideInInspector]
+    public List<string> trialTypeList = new List<string>(); // populated below.
+    [HideInInspector]
     public List<int> trialsper = new List<int>(); // presented per walk.
 
     // colors [ contrast is updated within staircase]
-    public Color preTrialColor; // green, to show ready/idle state
-    public Color probeColor; // grey
-    public Color targetColor; // white, decreasing in contrast to match probe over staircase.
-    public float targetAlpha;
-
+    [HideInInspector]
+    public Color preTrialColor, probeColor, targetColor;
+    
     void Start()
     {
 
         walkParameters = GameObject.Find("scriptHolder").GetComponent<walkParameters>();
         runExperiment = GameObject.Find("scriptHolder").GetComponent<runExperiment>();
-       
+
         // gather presets
+        preTrialsec = 0.5f; // buffer for no targ onset. (1 step)
         trialDur = walkParameters.walkDuration; // in second, determines how many targets we can fit in.
         responseWindow = 0.8f;
         targDurationsec = .02f;
@@ -186,7 +190,7 @@ public class trialParameters : MonoBehaviour
         blockTypelist[5] = 1;
         blockTypelist[6] = 1;
         blockTypelist[7] = 1;
-        blockTypelist[8] = 1;
+        
 
 
         // shuffle the order of stationary (0s) and walking (1s) blocks
@@ -195,14 +199,14 @@ public class trialParameters : MonoBehaviour
         blockTypeArray = new int[(int)nTrials, 3]; // 3 columns.
                                                    // ensure first staircased trials are stationary.
 
-        // staircaseblocks:
-        for (int iblock = 0; iblock < nStaircaseBlocks; iblock++)
+        // force two first blocks to be type 0, 1, (stationary, walking).
+        for (int iblock = 0; iblock < 2; iblock++)
         {
             for (int itrial = 0; itrial < ntrialsperBlock; itrial++)
             {
                 blockTypeArray[icounter, 0] = iblock;
                 blockTypeArray[icounter, 1] = itrial; // trial within block
-                blockTypeArray[icounter, 2] = 0; // no mvmnt during staircase
+                blockTypeArray[icounter, 2] = iblock; // [0 or 1]
 
                 icounter++;
             }
@@ -211,13 +215,13 @@ public class trialParameters : MonoBehaviour
 
         //now fill remaining blocks 
         //
-        for (int iblock = nStaircaseBlocks; iblock < nBlocks; iblock++)
+        for (int iblock = 2; iblock < nBlocks; iblock++)
         {
             for (int itrial = 0; itrial < ntrialsperBlock; itrial++)
             {
                 blockTypeArray[icounter,0] = iblock;
                 blockTypeArray[icounter, 1] = itrial;
-                blockTypeArray[icounter, 2] = blockTypelist[iblock-nStaircaseBlocks]; //mvmnt (randomized).
+                blockTypeArray[icounter, 2] = blockTypelist[iblock-2]; //.
 
                 icounter++;
             }

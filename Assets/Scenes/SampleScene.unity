@@ -14975,38 +14975,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1ee09535d8d81438bf87e9b2bbfcd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  participant: NLeeg
+  participant: LL
   TrialCount: 0
-  TrialType: 0
-  BlockType: 0
-  targCount: 0
+  forceHeightCalibration: 0
   forceEyeCalibration: 0
-  isPractice: 0
-  isStationary: 1
-  prepLSL: 0
-  recordEEG: 1
+  recordEEG: 0
+  invisiScreen: 0
   isEyeTracked: 1
-  invisiScreen: 1
-  trialinProgress: 0
-  updateText: 0
-  questready: 0
-  collectTrialSummary: 0
-  trialTime: 0
-  targState: 0
-  detectIndex: 0
-  pauseRW: 0
-  hasResponded: 0
-  FA_withintrial: []
-  hmd: {fileID: 1137631249}
-  effector: {fileID: 1137631248}
-  SphereShader: {fileID: 0}
   redX: {fileID: 0}
   objSRanipal: {fileID: 1473272307}
   hovScreen: {fileID: 0}
+  isPractice: 0
+  isStationary: 1
+  collectTrialSummary: 0
+  hasResponded: 0
+  trialinProgress: 0
+  questready: 0
+  trialTime: 0
+  FA_withintrial: []
+  targState: 0
+  detectIndex: 0
+  pauseRW: 0
   questP: {fileID: 0}
   Qcontrast: 0
-  Qlowquantile: 0
-  contrastOptions: []
 --- !u!4 &1896417866
 Transform:
   m_ObjectHideFlags: 0
@@ -15119,7 +15110,6 @@ MonoBehaviour:
   upperBoundaries: {x: 0, y: 0, z: 0}
   lowerBoundaries: {x: 0, y: 0, z: 0}
   passiveTaskOrigin: {x: 0, y: 0, z: 0}
-  passiveTaskDistance: 0
 --- !u!114 &1896417871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15136,19 +15126,20 @@ MonoBehaviour:
   responseWindow: 0.6
   targDurationsec: 0.03
   minITI: 0
+  trialDur: 0
   nTrials: 0
+  targetAlpha: 0
   nBlocks: 0
   ntrialsperBlock: 0
   nStaircaseBlocks: 0
   nRegularBlocks: 0
   trialTypeArray: 
   targRange: []
-  prevCalibContrast: []
+  blockTypelist: 
   trialD:
     trialNumber: 0
     blockID: 0
     trialID: 0
-    isStationary: 0
     trialType: 0
     targContrast: 0
     targContrastPosIdx: 0
@@ -15161,12 +15152,12 @@ MonoBehaviour:
     degExperimentE: 0
     degPracticalE: 0
     intPracticalE: 0
+    isStationary: 0
   trialTypeList: []
   trialsper: 
   preTrialColor: {r: 0, g: 0, b: 0, a: 0}
   probeColor: {r: 0, g: 0, b: 0, a: 0}
   targetColor: {r: 0, g: 0, b: 0, a: 0}
-  targetAlpha: 0
 --- !u!114 &1896417872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15231,7 +15222,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896417864}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bc5f48af2cffd747a079fe8c632e2c8, type: 3}
   m_Name: 

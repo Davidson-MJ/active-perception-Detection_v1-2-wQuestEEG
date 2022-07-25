@@ -69,8 +69,9 @@ public class targetAppearance : MonoBehaviour
             transform.localEulerAngles = new Vector3(0.0f, origRot, 0.0f);
 
             // predetermine target onset times:
-            float[] preTargISI = new float[runExperiment.TrialType]; // 
-            float[] gapsare = new float[runExperiment.TrialType]; // used to calc preTargISI below
+          
+            float[] preTargISI = new float[(int)trialParams.trialD.trialType]; // 
+            float[] gapsare = new float[(int)trialParams.trialD.trialType]; // used to calc preTargISI below
             float jitter = Random.Range(0.01f, 0.02f);
             // pseudo randomly space targets, with minimum ITI of responseWindow
 
@@ -79,10 +80,10 @@ public class targetAppearance : MonoBehaviour
             // note that targRange is the time within walk, excluding an onset/offset buffer.
 
             // shift the intertrial ISI on random trials:
-            subtr = Random.Range(-.5f, .5f); 
+            subtr = Random.Range(-.5f, .5f);
             // note that we have walkParameters.walkDuration total sec to play with. Make sure the subtr jitter, doesn't interfere
-
-            if  (runExperiment.TrialType == 8)
+            
+            if (trialParams.trialD.trialType == 8)
             {
                 gapsare[0] = 7.7f - subtr; // 
                 gapsare[1] = 6.6f - subtr;
@@ -93,7 +94,7 @@ public class targetAppearance : MonoBehaviour
                 gapsare[6] = 1.1f - subtr;
                 gapsare[7] = 0f;
             }
-            else if (runExperiment.TrialType == 7)
+            else if (trialParams.trialD.trialType == 7)
             {
                 gapsare[0] = 8f - subtr; // 
                 gapsare[1] = 6.9f - subtr;
@@ -103,7 +104,7 @@ public class targetAppearance : MonoBehaviour
                 gapsare[5] = 2.5f;
                 gapsare[6] = 0f;
             }
-            else if (runExperiment.TrialType == 6)
+            else if (trialParams.trialD.trialType == 6)
             {
                 gapsare[0] = 5.75f - subtr; // 
                 gapsare[1] = 4.75f - subtr;
@@ -113,7 +114,7 @@ public class targetAppearance : MonoBehaviour
                 gapsare[5] = 0f;
 
             }
-            else if (runExperiment.TrialType == 5)
+            else if (trialParams.trialD.trialType == 5)
             {
                 gapsare[0] = 4.25f - subtr;
                 gapsare[1] = 3.25f - subtr;
@@ -121,14 +122,14 @@ public class targetAppearance : MonoBehaviour
                 gapsare[3] = 1.25f - subtr;
                 gapsare[4] = 0f;
             }
-            else if (runExperiment.TrialType == 4)
+            else if (trialParams.trialD.trialType == 4)
             {
                 gapsare[0] = 3.75f - subtr;
                 gapsare[1] = 2.5f - subtr;
                 gapsare[2] = 1.5f - subtr;
                 gapsare[3] = 0.5f - subtr;
             }
-            else if (runExperiment.TrialType == 0) // no targets
+            else if (trialParams.trialD.trialType == 0) // no targets
             {
                 trialParams.trialD.targOnsetTime = -1;
                 trialParams.trialD.targResponse = -1;
@@ -138,7 +139,7 @@ public class targetAppearance : MonoBehaviour
             }
 
             // when targets should be presented, pre calculate ISI based on gaps defined above:
-            if (runExperiment.TrialType > 0)
+            if (trialParams.trialD.trialType > 0)
             {
 
                 // now prefill the preTargISI
@@ -177,7 +178,7 @@ public class targetAppearance : MonoBehaviour
             {
                 //// however many targets we have to present this trial, cycle through and present
 
-                for (int itargindx = 0; itargindx < runExperiment.TrialType; itargindx++)
+                for (int itargindx = 0; itargindx < trialParams.trialD.trialType; itargindx++)
                 {
                     // first target has no ISI adjustment
                     if (itargindx == 0)
@@ -241,7 +242,7 @@ public class targetAppearance : MonoBehaviour
                             processNoResponse = true;
                         }
                         runExperiment.detectIndex = 0; //clicks from now  counted as incorrect (too slow).
-                        runExperiment.targCount++;
+                        //runExperiment.targCount++;
                     } else // continue without showing a target (keep timings the same.
                     {
                         print("Hiding target");

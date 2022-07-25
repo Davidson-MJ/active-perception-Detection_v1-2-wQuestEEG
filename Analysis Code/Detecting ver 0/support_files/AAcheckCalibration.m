@@ -20,7 +20,7 @@ disp(tr)
 
 %
 %% Per csv file, import and wrangle into Matlab Structures, and data matrices:
-for ippant =4%:length(pfols)
+for ippant =3%:length(pfols)
   
 cd(datadir)
 pfols = dir([pwd filesep '*trialsummary.csv']);
@@ -119,9 +119,14 @@ filename = pfols(ippant).name;
     
     %% now plot accuracy standing and walking.
     %find standing and walking trials.
+    try
     strows= find(T.isStationary==1);
     wkrows= find(T.isStationary==0);
-   
+    catch
+        strows = find(contains( T.isStationary, 'True'));
+        
+       wkrows = find(contains( T.isStationary, 'False'));
+    end
     %intersect of experiment, and relevant condition:
     standingrows = intersect(strows, exprows);
     walkingrows = intersect(wkrows, exprows);

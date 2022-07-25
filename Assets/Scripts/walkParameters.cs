@@ -9,6 +9,7 @@ public class walkParameters : MonoBehaviour
     // To hide in the inspector (but be serialized), use 
     // [HideInInspector]
 
+
     // random walk params
     [Header("Walking/Tracking Parameters")]
     //public float trialDuration;
@@ -20,32 +21,15 @@ public class walkParameters : MonoBehaviour
     public float reachBelowPcnt;
 
 
-    // Hide the following in the inspector, as we don't want tweaking.
-    //[HideInInspector]
-    public float rampDistance;
+    // Hide the following in the inspector, as we don't want accidental tweaking.
     [HideInInspector]
-    public float rampDuration;
-
+    public float rampDistance, rampDuration;
+    
     [HideInInspector]
-    public Vector2 stepDurationRange;
+    public Vector2 stepDurationRange, stepDistanceRange;
+   
     [HideInInspector]
-    public Vector2 stepDistanceRange;
-
-
-
-    // dimensionality
-    [Header("Target Location and Boundaries")]
-    public Vector3 planeOrigin;
-    public Vector3 cubeOrigin;
-    public Vector3 planeDimensions;
-    public Vector3 cubeDimensions;
-    public Vector3 upperBoundaries;
-    public Vector3 lowerBoundaries;
-
-    [HideInInspector]
-    public Vector3 passiveTaskOrigin;
-    [HideInInspector]
-    public float passiveTaskDistance;
+    public Vector3 planeOrigin, cubeOrigin, planeDimensions, cubeDimensions, upperBoundaries, lowerBoundaries, passiveTaskOrigin;
 
     GameObject motionPath;
     GameObject hmd;
