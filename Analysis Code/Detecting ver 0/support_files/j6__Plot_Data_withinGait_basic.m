@@ -7,17 +7,23 @@
 %pariticpant, as a position of the gait cycle.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%% QUEST DETECT version %%%%%%
+%               v3                %
+%%%%%% QUEST Eye and EEG version %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Mac:
-% datadir='/Users/matthewdavidson/Documents/GitHub/active-perception-Detection_v1-1wQuest/Analysis Code/Detecting ver 0/Raw_data';
-% PC:
-datadir='C:\Users\User\Documents\matt\GitHub\active-perception-Detection_v1-1wQuest\Analysis Code\Detecting ver 0\Raw_data';
-% laptop:
-% datadir='C:\Users\vrlab\Documents\GitHub\active-perception-Detection_v1-1wQuest\Analysis Code\Detecting ver 0\Raw_data';
 
-cd([datadir filesep 'ProcessedData']);
+%laptop:
+cd('C:\Users\mdav0285\OneDrive - The University of Sydney (Staff)\Documents\GitHub\Analysis-Detection-v3-wEyeEEG\support_Functions');
+%
+sourcedir = pwd;
+cd ../Figures
+figdir= pwd;
+cd ../data_Processed;
+procdatadir = pwd;
+
+
+%
+
+
 pfols= dir([pwd  filesep '*summary_data.mat']);
 nsubs= length(pfols);
 %%
@@ -28,7 +34,7 @@ disp(tr)
 %%
 % Participant level effects (PFX) 
 % plots of raw distributions (no binning).
-job.plot_TargOnspos =0; % target onset relative to gait.
+job.plot_TargOnspos =1; % target onset relative to gait.
 job.plot_RespOnspos =0; % response onset relative to gait (includes FAs)
 job.plot_TargContrastPos =0;% plots target onset per gait pos, split by contrast.
 
@@ -61,7 +67,7 @@ job.plotGFX_RespAcc_perGaitpos_binned=0; %
 
     %%
     disp(['loading GFX data into workspace...'])
-    cd([datadir filesep 'ProcessedData' filesep 'GFX']);
+    cd([procdatadir filesep 'GFX']);
     load('GFX_Data_inGaits.mat');
 
 
@@ -87,10 +93,11 @@ if job.plot_TargOnspos % target onset relative to gait.
  cfg=[];
  cfg.subjIDs = subjIDs;
  cfg.type = 'Target';
- cfg.datadir= datadir; % for orienting to figures folder
+ cfg.figdir= figdir; % for orienting to figures folder
  cfg.HeadData= GFX_headY;
  cfg.pidx1= pidx1;
  cfg.pidx2= pidx2;
+ cfg.usebin=0;
  % cycles through ppants, plots with correct labels.
  plot_onsetDistribution(GFX_TargPosData, cfg);
  
@@ -102,7 +109,7 @@ if job.plot_RespOnspos % Response onset relative to gait.
     cfg=[];
  cfg.subjIDs = subjIDs;
  cfg.type = 'Response';
- cfg.datadir= datadir; % for orienting to figures folder
+ cfg.figdir= figdir; % for orienting to figures folder
  cfg.HeadData= GFX_headY;
  cfg.pidx1= pidx1;
  cfg.pidx2= pidx2;
@@ -119,7 +126,7 @@ if job.plot_TargContrastPos==1
     cfg=[];
     cfg.subjIDs = subjIDs;
     cfg.type = 'Target';
-    cfg.datadir= datadir; % for orienting to figures folder
+    cfg.figdir= figdir; % for orienting to figures folder
     cfg.HeadData= GFX_headY;
     cfg.pidx1= pidx1;
     cfg.pidx2= pidx2;
@@ -132,10 +139,12 @@ if job.plot_RT_perResppos==1
  cfg.subjIDs = subjIDs;
  cfg.type = 'Response';
  cfg.DV = 'RT';
- cfg.datadir= datadir; % for orienting to figures folder
+ cfg.figdir= figdir; % for orienting to figures folder
  cfg.HeadData= GFX_headY;
  cfg.pidx1= pidx1;
  cfg.pidx2= pidx2;
+ cfg.usebin=1;
+ cfg.plotShuff=0;
  cfg.plotlevel = 'PFX'; % plot separate figures per participant
  
     plot_GaitresultsBinned(GFX_RespPosData, cfg);
@@ -149,10 +158,11 @@ if job.plot_RT_perTargpos==1
  cfg.subjIDs = subjIDs;
  cfg.type = 'Target';
  cfg.DV = 'RT';
- cfg.datadir= datadir; % for orienting to figures folder
+ cfg.figdir= figdir; % for orienting to figures folder
  cfg.HeadData= GFX_headY;
  cfg.pidx1= pidx1;
  cfg.pidx2= pidx2;
+ cfg.usebin=1;
  cfg.plotlevel = 'PFX'; % plot separate figures per participant
     
     plot_GaitresultsBinned(GFX_TargPosData, cfg);
@@ -166,7 +176,7 @@ if job.plot_Acc_perTargpos==1
  cfg.subjIDs = subjIDs;
  cfg.type = 'Target';
  cfg.DV = 'Accuracy';
- cfg.datadir= datadir; % for orienting to figures folder
+ cfg.figdir= figdir; % for orienting to figures folder
  cfg.HeadData= GFX_headY;
  cfg.plotShuff=0;
  cfg.usebin=1;
@@ -178,21 +188,21 @@ if job.plot_Acc_perTargpos==1
    %% 
 end%
 
-if job.plot_Acc_perResppos==1
- % plot the RT in each bin, calculated in concatGFX above.
-    cfg=[];
- cfg.subjIDs = subjIDs;
- cfg.type = 'Response';
- cfg.DV = 'Accuracy';
- cfg.datadir= datadir; % for orienting to figures folder
- cfg.HeadData= GFX_headY;
- cfg.pidx1= pidx1;
- cfg.pidx2= pidx2;
- cfg.plotlevel = 'PFX'; % plot separate figures per participant
-    
-    plot_GaitresultsBinned(GFX_RespPosData, cfg);
-   %% 
-end%
+% if job.plot_Acc_perResppos==1
+%  % plot the acc in each bin, sorted by resps in that bin
+%     cfg=[];
+%  cfg.subjIDs = subjIDs;
+%  cfg.type = 'Response';
+%  cfg.DV = 'Accuracy';
+%  cfg.datadir= datadir; % for orienting to figures folder
+%  cfg.HeadData= GFX_headY;
+%  cfg.pidx1= pidx1;
+%  cfg.pidx2= pidx2;
+%  cfg.plotlevel = 'PFX'; % plot separate figures per participant
+%     
+%     plot_GaitresultsBinned(GFX_RespPosData, cfg);
+%    %% 
+% end%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -211,7 +221,7 @@ if job.plotGFX_TargContrastPos==1
     cfg=[];
     cfg.subjIDs = subjIDs;
     cfg.type = 'Target';
-    cfg.datadir= datadir; % for orienting to figures folder
+    cfg.figdir= figdir; % for orienting to figures folder
     cfg.HeadData= GFX_headY;
     cfg.pidx1= pidx1;
     cfg.pidx2= pidx2;
@@ -226,7 +236,7 @@ if job.plotGFX_Targcount_perGaitpos==1
     cfg=[];
     dataIN = GFX_TargPosData;
     cfg.ytitle = 'Target';
-    cfg.datadir= datadir; 
+    cfg.figdir= figdir; 
     cfg.headY = GFX_headY;   
     cfg.norm=0;
     cfg.plotShuff=0;
@@ -257,13 +267,13 @@ if job.plotGFX_TargAcc_perGaitpos_binned==1 %
  cfg.subjIDs = subjIDs;
  cfg.type = 'Target';
  cfg.DV = 'Accuracy';
- cfg.datadir= datadir; % for orienting to figures folder
+ cfg.figdir= figdir; % for orienting to figures folder
  cfg.HeadData= GFX_headY;
  cfg.usebin=1;
  cfg.pidx1= pidx1;
  cfg.pidx2= pidx2;
  cfg.plotlevel = 'GFX'; % plot separate figures per participant
- cfg.norm=1;
+ cfg.norm=0;
  cfg.plotShuff=0;
  cfg.normtype= 'relative'; %['absolute', 'relative', ''relchange', 'normchange', db']
  cfg.ylims = [-.10 0.10]; % if normalized
@@ -317,7 +327,7 @@ if job.plotGFX_TargRT_perGaitpos_binned==1 %
  cfg.subjIDs = subjIDs;
  cfg.type = 'Target';
  cfg.DV = 'RT';
- cfg.datadir= datadir; % for orienting to figures folder
+ cfg.figdir= figdir; % for orienting to figures folder
  cfg.HeadData= GFX_headY;
  cfg.pidx1= pidx1;
  cfg.pidx2= pidx2;
@@ -325,7 +335,8 @@ if job.plotGFX_TargRT_perGaitpos_binned==1 %
  cfg.norm=0; % already z scored, so don't tweak.
  cfg.ylims = [-.15 .15]; % if norm =0;
  cfg.plotShuff=0;
- cfg.normtype= 'relative';   
+ cfg.normtype= 'relative'; 
+ cfg.usebin=1
     plot_GaitresultsBinned(GFX_TargPosData, cfg);
     
 end
