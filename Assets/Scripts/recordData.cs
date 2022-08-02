@@ -66,12 +66,15 @@ public class recordData : MonoBehaviour
 
         if (runExperiment.invisiScreen)
         {
-            outputFolder = "C:/Users/User/Documents/matt/GitHub/active-perception-Detection_v1-2-wQuestEEG/Assets/Data/taskfree-EEG/";
-        } else
-        {
-            outputFolder = "C:/Users/User/Documents/matt/GitHub/active-perception-Detection_v1-2-wQuestEEG/Analysis Code/Detecting ver 0/Raw_data/";
+            outputFolder = "C:/Users/mobilab/Documents/GitHub/active-perception-Detection_v1-2-wQuestEEG/Assets/Data/taskfree-EEG/";
+
         }
-        
+        else
+        {
+            outputFolder = "C:/Users/mobilab/Documents/GitHub/active-perception-Detection_v1-2-wQuestEEG/Analysis Code/Detecting ver 0/Raw_data/";
+
+        }
+
 
         if (runExperiment.isEyeTracked)
         {

@@ -206,7 +206,7 @@ public class trialParameters : MonoBehaviour
             {
                 blockTypeArray[icounter, 0] = iblock;
                 blockTypeArray[icounter, 1] = itrial; // trial within block
-                blockTypeArray[icounter, 2] = iblock; // [0 or 1]
+                blockTypeArray[icounter, 2] =  iblock; // [0 or 1]
 
                 icounter++;
             }
