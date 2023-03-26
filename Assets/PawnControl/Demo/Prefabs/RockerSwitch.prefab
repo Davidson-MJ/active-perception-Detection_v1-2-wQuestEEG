@@ -1,0 +1,1313 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1864831111756126}
+  m_IsPrefabParent: 1
+--- !u!1 &1136786593691740
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4269326667733492}
+  - component: {fileID: 54062355034664642}
+  - component: {fileID: 114346631547081156}
+  - component: {fileID: 114644940400019628}
+  m_Layer: 0
+  m_Name: TouchPad3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1273372938650720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4344300958486462}
+  - component: {fileID: 33758907022006014}
+  - component: {fileID: 23329201484761176}
+  m_Layer: 0
+  m_Name: Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1439399789666870
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4176845400454072}
+  - component: {fileID: 33375485541866232}
+  - component: {fileID: 65632851581272838}
+  - component: {fileID: 23707246134430578}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1561118472919814
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4636533223119728}
+  - component: {fileID: 33929631533013498}
+  - component: {fileID: 65913546561327930}
+  - component: {fileID: 23058585422444306}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1717218561885028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4905380800894266}
+  - component: {fileID: 54594609893887326}
+  - component: {fileID: 114226269841040934}
+  - component: {fileID: 114534313703068284}
+  m_Layer: 0
+  m_Name: SwitchButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1740414604696184
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4192741134118874}
+  - component: {fileID: 54751334225838142}
+  - component: {fileID: 114274782085055050}
+  - component: {fileID: 114581165416342770}
+  m_Layer: 0
+  m_Name: TouchPad1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1864831111756126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4163311327982314}
+  m_Layer: 0
+  m_Name: RockerSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1942552900350014
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4791111073827434}
+  - component: {fileID: 33265955139661096}
+  - component: {fileID: 65331192960291544}
+  - component: {fileID: 23031585609854400}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4163311327982314
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1864831111756126}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.1529, y: 1.21, z: 0.36}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4344300958486462}
+  - {fileID: 4905380800894266}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4176845400454072
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439399789666870}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4192741134118874}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4192741134118874
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1740414604696184}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.024}
+  m_LocalScale: {x: 0.08, y: 0.015, z: 0.03}
+  m_Children:
+  - {fileID: 4176845400454072}
+  m_Father: {fileID: 4905380800894266}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4269326667733492
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136786593691740}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.025000006}
+  m_LocalScale: {x: 0.08, y: 0.015, z: 0.03}
+  m_Children:
+  - {fileID: 4791111073827434}
+  m_Father: {fileID: 4905380800894266}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4344300958486462
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1273372938650720}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.02, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 4163311327982314}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4636533223119728
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1561118472919814}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.08, y: 0.015, z: 0.08}
+  m_Children: []
+  m_Father: {fileID: 4905380800894266}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4791111073827434
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1942552900350014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4269326667733492}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4905380800894266
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1717218561885028}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4636533223119728}
+  - {fileID: 4192741134118874}
+  - {fileID: 4269326667733492}
+  m_Father: {fileID: 4163311327982314}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23031585609854400
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1942552900350014}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 8fde0228a72986441bee2a75e4be2a83, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23058585422444306
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1561118472919814}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 8fde0228a72986441bee2a75e4be2a83, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23329201484761176
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1273372938650720}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 6cbba3a789d43564e8ab97b29489a06f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23707246134430578
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439399789666870}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 8fde0228a72986441bee2a75e4be2a83, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33265955139661096
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1942552900350014}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33375485541866232
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439399789666870}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33758907022006014
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1273372938650720}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33929631533013498
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1561118472919814}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54062355034664642
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136786593691740}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54594609893887326
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1717218561885028}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54751334225838142
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1740414604696184}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65331192960291544
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1942552900350014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65632851581272838
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439399789666870}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65913546561327930
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1561118472919814}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114226269841040934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1717218561885028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 082ce790f02440146a32e1b7a75b3d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 4163311327982314}
+  limitX: 0
+  limitY: 0
+  limitZ: 0
+  basePosition: {x: 0, y: 0.01, z: 0}
+  minLocalPosition: {x: 0, y: 0, z: 0}
+  maxLocalPosition: {x: 0, y: 0, z: 0}
+  baseRotation: {x: 0, y: 0, z: 0, w: 1}
+  limitAngle: 1
+  minLocalAngle: 0
+  maxLocalAngle: 10
+  limitAngleAxis: {x: 1, y: 0, z: 0}
+  rotationMethod: 0
+  gameObjectEvent:
+    id: 0
+    label: GameObject Event
+    tooltip: Call functions based on the GameObject life cycle
+    eventTypeLabels:
+    - Never
+    - Start
+    - On Destroy
+    - Update
+    - ' '
+    - ' '
+    - ' '
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 1717218561885028}
+        methodName: KinematicLimitations/Rotate
+        parameters:
+        - fromEvent: 0
+          localProperty: Constant
+          type: 1
+          floatConstant: 100
+          intConstant: 0
+          boolConstant: 0
+          stringConstant: 
+          vector3Constant: {x: 0, y: 0, z: 0}
+          gameObjectConstant: {fileID: 0}
+          rigidbodyConstant: {fileID: 0}
+      boolInverse: 0
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+  xSliderEvents:
+    id: 1
+    label: X Axis
+    tooltip: 'Call function using the X axis range value
+
+      Parameter: the range along the X axis (-1..1)'
+    eventTypeLabels:
+    - Never
+    - On Min
+    - On Max
+    - While Min
+    - While Max
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+  ySliderEvents:
+    id: 2
+    label: Y Axis
+    tooltip: 'Call function using the Y axis range value
+
+      Parameter: the range along the Y axis (-1..1)'
+    eventTypeLabels:
+    - Never
+    - On Min
+    - On Max
+    - While Min
+    - While Max
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+  zSliderEvents:
+    id: 3
+    label: Z Axis
+    tooltip: 'Call function using the Z axis range value
+
+      Parameter: the range along the Z axis (-1..1)'
+    eventTypeLabels:
+    - Never
+    - On Min
+    - On Max
+    - While Min
+    - While Max
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+  angleEvents:
+    id: 4
+    label: Angle
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Min
+    - On Max
+    - While Min
+    - While Max
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 2
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: Light/set_enabled
+        parameters:
+        - fromEvent: 0
+          localProperty: Constant
+          type: 3
+          floatConstant: 0
+          intConstant: 0
+          boolConstant: 1
+          stringConstant: 
+          vector3Constant: {x: 0, y: 0, z: 0}
+          gameObjectConstant: {fileID: 0}
+          rigidbodyConstant: {fileID: 0}
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+    - eventType: 1
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: Light/set_enabled
+        parameters:
+        - fromEvent: 0
+          localProperty: Constant
+          type: 3
+          floatConstant: 0
+          intConstant: 0
+          boolConstant: 0
+          stringConstant: 
+          vector3Constant: {x: 0, y: 0, z: 0}
+          gameObjectConstant: {fileID: 0}
+          rigidbodyConstant: {fileID: 0}
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+--- !u!114 &114274782085055050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1740414604696184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466bfefa01b6b0b4581534749b39666a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionHandlers:
+    id: 0
+    label: Collision Event
+    tooltip: 'Call functions using the collider state
+
+      Parameter: the GameObject colliding with the collider'
+    eventTypeLabels:
+    - Never
+    - On Collision Start
+    - On Collision End
+    - While Colliding
+    - While not Colliding
+    - On Collision Change
+    - Always
+    fromEventLabel: 
+    events: []
+--- !u!114 &114346631547081156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136786593691740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466bfefa01b6b0b4581534749b39666a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionHandlers:
+    id: 0
+    label: Collision Event
+    tooltip: 'Call functions using the collider state
+
+      Parameter: the GameObject colliding with the collider'
+    eventTypeLabels:
+    - Never
+    - On Collision Start
+    - On Collision End
+    - While Colliding
+    - While not Colliding
+    - On Collision Change
+    - Always
+    fromEventLabel: 
+    events: []
+--- !u!114 &114534313703068284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1717218561885028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27c61780f506f84282a32ce63522c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabType: 4
+  sticky: 0
+  range: 0.2
+  inputEvents:
+  - id: 0
+    label: Vertical
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 1
+    label: Horizontal
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 2
+    label: Stick Button
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 3
+    label: Button 1
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 4
+    label: Button 2
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 5
+    label: Button 3
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 6
+    label: Button 4
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 7
+    label: Trigger 1
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 8
+    label: Trigger 2
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 9
+    label: Option
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  socket: {fileID: 0}
+  hand: 0
+  pose: {fileID: 0}
+  handTarget: {fileID: 0}
+  isHeld: 0
+  grabbedEvent:
+    id: 0
+    label: Grab Event
+    tooltip: 'Call functions using the grabbing status
+
+      Parameter: the grabbed object'
+    eventTypeLabels:
+    - Nothing
+    - On Grab Start
+    - On Let Go
+    - While Holding
+    - While Not Holding
+    - On Grab Change
+    - Always
+    fromEventLabel: socket.gameObject
+    events: []
+--- !u!114 &114581165416342770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1740414604696184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27c61780f506f84282a32ce63522c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabType: 4
+  sticky: 0
+  range: 0.2
+  inputEvents:
+  - id: 0
+    label: Vertical
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 1
+    label: Horizontal
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 2
+    label: Stick Button
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 3
+    label: Button 1
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 4
+    label: Button 2
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 5
+    label: Button 3
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 6
+    label: Button 4
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 7
+    label: Trigger 1
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 8
+    label: Trigger 2
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 9
+    label: Option
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  socket: {fileID: 0}
+  hand: 0
+  pose: {fileID: 0}
+  handTarget: {fileID: 0}
+  isHeld: 0
+  grabbedEvent:
+    id: 0
+    label: Grab Event
+    tooltip: 'Call functions using the grabbing status
+
+      Parameter: the grabbed object'
+    eventTypeLabels:
+    - Nothing
+    - On Grab Start
+    - On Let Go
+    - While Holding
+    - While Not Holding
+    - On Grab Change
+    - Always
+    fromEventLabel: socket.gameObject
+    events: []
+--- !u!114 &114644940400019628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1136786593691740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27c61780f506f84282a32ce63522c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabType: 4
+  sticky: 0
+  range: 0.2
+  inputEvents:
+  - id: 0
+    label: Vertical
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 1
+    label: Horizontal
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 2
+    label: Stick Button
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 3
+    label: Button 1
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 4
+    label: Button 2
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 5
+    label: Button 3
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 6
+    label: Button 4
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 7
+    label: Trigger 1
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 8
+    label: Trigger 2
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  - id: 9
+    label: Option
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+    defaultParameterProperty: 
+  socket: {fileID: 0}
+  hand: 0
+  pose: {fileID: 0}
+  handTarget: {fileID: 0}
+  isHeld: 0
+  grabbedEvent:
+    id: 0
+    label: Grab Event
+    tooltip: 'Call functions using the grabbing status
+
+      Parameter: the grabbed object'
+    eventTypeLabels:
+    - Nothing
+    - On Grab Start
+    - On Let Go
+    - While Holding
+    - While Not Holding
+    - On Grab Change
+    - Always
+    fromEventLabel: socket.gameObject
+    events: []

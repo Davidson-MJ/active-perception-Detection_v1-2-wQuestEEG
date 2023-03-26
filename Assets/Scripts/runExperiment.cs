@@ -30,6 +30,7 @@ public class runExperiment : MonoBehaviour
     public bool recordEEG = true;
     public bool invisiScreen = true; // toggle for hiding the hoverscreen (changes location to out-of-sight)
     public bool isEyeTracked = true;
+    public bool isinVR = false;
 
     [Header("GObjs:")]
     public GameObject redX; // adjust walk based on location
@@ -125,8 +126,11 @@ public class runExperiment : MonoBehaviour
 
         hovScreen = GameObject.Find("Hoverscreen");
 
+        if (isinVR)
+        {
+            EyetrackProcesses = GameObject.Find("SRanipal").GetComponent<EyetrackProcesses>();
 
-        EyetrackProcesses = GameObject.Find("SRanipal").GetComponent<EyetrackProcesses>();
+        }
 
         questStair = new QuestStaircase[2]; // one staircase each for walking, and stationary condition.
         for (int i = 0; i < 2; i++)

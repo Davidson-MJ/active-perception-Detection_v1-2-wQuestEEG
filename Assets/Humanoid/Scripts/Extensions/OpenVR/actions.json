@@ -1,0 +1,195 @@
+{
+	"actions": [
+		{
+			"name": "/actions/default/in/SkeletonLeftHand",
+			"type": "skeleton",
+			"skeleton": "/skeleton/hand/left"
+		},
+		{
+			"name": "/actions/default/in/SkeletonRightHand",
+			"type": "skeleton",
+			"skeleton": "/skeleton/hand/right"
+		},
+
+		{
+			"name": "/actions/default/in/LeftJoystick",
+			"type": "vector2"
+		},
+		{
+			"name": "/actions/default/in/LeftJoystickTouch",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/LeftJoystickPress",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/LeftTouchpad",
+			"type": "vector2"
+		},
+		{
+			"name": "/actions/default/in/LeftTouchpadTouch",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/LeftTouchpadPress",
+			"type": "vector1"
+		},
+		{
+			"name": "/actions/default/in/LeftTouchpadClick",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/LeftTrigger",
+			"type": "vector1"
+		},
+		{
+			"name": "/actions/default/in/LeftTriggerTouch",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/LeftGrip",
+			"type": "vector1"
+		},
+		{
+			"name": "/actions/default/in/LeftGripTouch",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/LeftGripClick",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/LeftButtonA",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/LeftButtonATouch",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/LeftButtonB",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/LeftButtonBTouch",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/RightJoystick",
+			"type": "vector2"
+		},
+		{
+			"name": "/actions/default/in/RightJoystickTouch",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/RightJoystickPress",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/RightTouchpad",
+			"type": "vector2"
+		},
+		{
+			"name": "/actions/default/in/RightTouchpadTouch",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/RightTouchpadPress",
+			"type": "vector1"
+		},
+		{
+			"name": "/actions/default/in/RightTouchpadClick",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/RightTrigger",
+			"type": "vector1"
+		},
+		{
+			"name": "/actions/default/in/RightTriggerTouch",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/RightGrip",
+			"type": "vector1"
+		},
+		{
+			"name": "/actions/default/in/RightGripTouch",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/RightGripClick",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/RightButtonA",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/RightButtonATouch",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/RightButtonB",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/in/RightButtonBTouch",
+			"type": "boolean"
+		},
+		{
+			"name": "/actions/default/out/Haptic",
+			"type": "vibration"
+		},
+		{
+			"name": "/actions/default/out/LeftHaptic",
+			"type": "vibration"
+		},
+		{
+			"name": "/actions/default/out/RightHaptic",
+			"type": "vibration"
+		}
+
+	],
+	"action_sets": [
+		{
+			"name": "/actions/default",
+			"usage": "single"
+		}
+	],
+	"default_bindings": [
+		{
+			"controller_type": "vive_controller",
+			"binding_url": "bindings_vive_controller.json"
+		},
+		{
+			"controller_type": "oculus_touch",
+			"binding_url": "bindings_oculus_touch.json"
+		},
+		{
+			"controller_type": "knuckles",
+			"binding_url": "bindings_knuckles.json"
+		},
+		{
+			"controller_type": "holographic_controller",
+			"binding_url": "bindings_holographic_controller.json"
+		},
+		{
+			"controller_type": "vive",
+			"binding_url": "binding_vive.json"
+		},
+		{
+			"controller_type": "vive_pro",
+			"binding_url": "binding_vive_pro.json"
+		}
+	],
+	"localization": [
+		{
+			"language_tag": "en_US",
+			"/actions/default/in/SkeletonLeftHand": "Skeleton (Left)",
+			"/actions/default/in/SkeletonRightHand": "Skeleton (Right)"
+		}
+	]
+}

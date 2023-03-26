@@ -1,0 +1,174 @@
+{
+	"app_key": "application.generated.unity.steamvr.exe",
+	"bindings": {
+			"/actions/default": {
+				"haptics": [
+					{
+						"output": "/actions/default/out/haptic",
+						"path": "/user/hand/left/output/haptic"
+					},
+					{
+						"output": "/actions/default/out/haptic",
+						"path": "/user/hand/right/output/haptic"
+					}
+				],
+				"poses": [
+					{
+						"output": "/actions/default/in/pose",
+						"path": "/user/hand/left/pose/raw"
+					},
+					{
+						"output": "/actions/default/in/pose",
+						"path": "/user/hand/right/pose/raw"
+					}
+				],
+				"skeleton": [
+					{
+						"output": "/actions/default/in/skeletonlefthand",
+						"path": "/user/hand/left/input/skeleton/left"
+					},
+					{
+						"output": "/actions/default/in/skeletonrighthand",
+						"path": "/user/hand/right/input/skeleton/right"
+					}
+				],
+				"sources": [
+					// ----- Left
+
+					{
+						"inputs": {
+							"click": {
+								"output": "/actions/default/in/LeftJoystickPress"
+							},
+							"position": {
+								"output": "/actions/default/in/LeftJoystick"
+							}
+						},
+						"mode": "joystick",
+						"path": "/user/hand/left/input/joystick"
+					},
+
+					{
+						"inputs": {
+							"touch": {
+								"output": "/actions/default/in/LeftTouchpadTouch"
+							},
+							"click": {
+								"output": "/actions/default/in/LeftTouchpadClick"
+							},
+							"position": {
+								"output": "/actions/default/in/LeftTouchpad"
+							}
+						},
+						"mode": "trackpad",
+						"path": "/user/hand/left/input/trackpad"
+					},
+
+					{
+						"inputs": {
+							"touch": {
+								"output": "/actions/default/in/LeftTriggerTouch"
+							},
+							"pull": {
+								"output": "/actions/default/in/LeftTrigger"
+							}
+						},
+						"mode": "trigger",
+						"path": "/user/hand/left/input/trigger"
+					},
+
+					{
+						"path": "/user/hand/left/input/grip",
+						"mode": "button",
+						"inputs": {
+							"click": {
+								"output": "/actions/default/in/LeftGripClick"
+							}
+						}
+					},
+
+					{
+						"inputs": {
+							"touch": {
+								"output": "/actions/default/in/LeftButtonATouch"
+							},
+							"click": {
+								"output": "/actions/default/in/LeftButtonA"
+							}
+						},
+						"mode": "button",
+						"path": "/user/hand/left/input/application_menu"
+					},
+
+
+
+					// ----- Right
+
+					{
+						"inputs": {
+							"click": {
+								"output": "/actions/default/in/RightJoystickPress"
+							},
+							"position": {
+								"output": "/actions/default/in/RightJoystick"
+							}
+						},
+						"mode": "joystick",
+						"path": "/user/hand/right/input/joystick"
+					},
+
+					{
+						"inputs": {
+							"touch": {
+								"output": "/actions/default/in/RightTouchpadTouch"
+							},
+							"click": {
+								"output": "/actions/default/in/RightTouchpadClick"
+							},
+							"position": {
+								"output": "/actions/default/in/RightTouchpad"
+							}
+						},
+						"mode": "trackpad",
+						"path": "/user/hand/right/input/trackpad"
+					},
+
+					{
+						"inputs": {
+							"pull": {
+								"output": "/actions/default/in/RightTrigger"
+							}
+						},
+						"mode": "trigger",
+						"path": "/user/hand/right/input/trigger"
+					},
+
+					{
+						"inputs": {
+							"click": {
+								"output": "/actions/default/in/RightGripClick"
+							}
+						},
+						"mode": "button",
+						"path": "/user/hand/right/input/grip"
+					},
+
+					{
+						"inputs": {
+							"touch": {
+								"output": "/actions/default/in/RightButtonATouch"
+							},
+							"click": {
+								"output": "/actions/default/in/RightButtonA"
+							}
+						},
+						"mode": "button",
+						"path": "/user/hand/right/input/application_menu"
+					}
+				]
+			}
+	},
+	"controller_type": "holographic_controller",
+	"description": "",
+	"name": "Default bindings for Windows Mixed Reality Controllers"
+}

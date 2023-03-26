@@ -1,0 +1,1523 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1886339611299816}
+  m_IsPrefabParent: 1
+--- !u!1 &1014415379911186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4658965113215178}
+  - component: {fileID: 114434915744402832}
+  m_Layer: 0
+  m_Name: Interaction Pointer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1261922535975774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4404188045391298}
+  - component: {fileID: 33792706474391798}
+  - component: {fileID: 65809259275797944}
+  - component: {fileID: 23246423044441728}
+  m_Layer: 0
+  m_Name: Grip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1338508042946736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4159663301608934}
+  - component: {fileID: 33991075976430308}
+  - component: {fileID: 23723093056483918}
+  - component: {fileID: 54750522060933646}
+  - component: {fileID: 114496071672631398}
+  m_Layer: 0
+  m_Name: Barrel Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1436898006324960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4585128485577738}
+  - component: {fileID: 82545431224417982}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1523173821326922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4199068789977424}
+  - component: {fileID: 114493821478521018}
+  - component: {fileID: 65956231319628344}
+  m_Layer: 0
+  m_Name: ClipSocket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1607751933130066
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4502298486734568}
+  - component: {fileID: 212856850563888546}
+  m_Layer: 0
+  m_Name: Crosshairs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &1623586009004810
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4532792015013658}
+  - component: {fileID: 212587847783174698}
+  m_Layer: 0
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1733005783856408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4871809256891548}
+  - component: {fileID: 108550437052421634}
+  - component: {fileID: 114025439724628228}
+  m_Layer: 0
+  m_Name: NozzleFlash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1836659987641172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4846303205762852}
+  - component: {fileID: 33195271805326392}
+  - component: {fileID: 136321194670036630}
+  - component: {fileID: 23254383521655924}
+  m_Layer: 0
+  m_Name: Cylinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1882729648568646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4724058278612682}
+  - component: {fileID: 114159929236210316}
+  m_Layer: 0
+  m_Name: Handle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1886339611299816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4001617637216370}
+  - component: {fileID: 54339493025480010}
+  - component: {fileID: 114645475296206984}
+  m_Layer: 0
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4001617637216370
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886339611299816}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.622, z: -0.23386544}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4159663301608934}
+  - {fileID: 4846303205762852}
+  - {fileID: 4404188045391298}
+  - {fileID: 4871809256891548}
+  - {fileID: 4585128485577738}
+  - {fileID: 4658965113215178}
+  - {fileID: 4724058278612682}
+  - {fileID: 4199068789977424}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4159663301608934
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1338508042946736}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.2}
+  m_Children: []
+  m_Father: {fileID: 4001617637216370}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4199068789977424
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523173821326922}
+  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: -0.049999952, z: -0.06999999}
+  m_LocalScale: {x: 0.05, y: 0.12, z: 0.06}
+  m_Children: []
+  m_Father: {fileID: 4001617637216370}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4404188045391298
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261922535975774}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: -0.05, z: -0.06}
+  m_LocalScale: {x: 0.04, y: 0.12, z: 0.05}
+  m_Children: []
+  m_Father: {fileID: 4001617637216370}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!4 &4502298486734568
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1607751933130066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4532792015013658}
+  m_Father: {fileID: 4658965113215178}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4532792015013658
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1623586009004810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4502298486734568}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4585128485577738
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436898006324960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4001617637216370}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4658965113215178
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1014415379911186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4502298486734568}
+  m_Father: {fileID: 4001617637216370}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4724058278612682
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1882729648568646}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: -0.05, z: -0.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4001617637216370}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!4 &4846303205762852
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1836659987641172}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0.015}
+  m_LocalScale: {x: 0.024, y: 0.1, z: 0.024}
+  m_Children: []
+  m_Father: {fileID: 4001617637216370}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!4 &4871809256891548
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733005783856408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4001617637216370}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23246423044441728
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261922535975774}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 621aa4ca84cd6824088baa431f636df5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23254383521655924
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1836659987641172}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 621aa4ca84cd6824088baa431f636df5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!23 &23723093056483918
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1338508042946736}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 621aa4ca84cd6824088baa431f636df5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33195271805326392
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1836659987641172}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33792706474391798
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261922535975774}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &33991075976430308
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1338508042946736}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54339493025480010
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886339611299816}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54750522060933646
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1338508042946736}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65809259275797944
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261922535975774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65956231319628344
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523173821326922}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &82545431224417982
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436898006324960}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b716754477d9e914997f3ec559e012e2, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!108 &108550437052421634
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733005783856408}
+  m_Enabled: 0
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 8
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!114 &114025439724628228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733005783856408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2ef76e20cbeca4ebbe9db6fed220a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.1
+--- !u!114 &114159929236210316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1882729648568646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27c61780f506f84282a32ce63522c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabType: 0
+  sticky: 0
+  range: 0.2
+  inputEvents:
+  - id: 0
+    label: Vertical
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+      label: 
+      poseValue: {fileID: 0}
+      stringValue: 
+      poseFloatEvent:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: Passer.ControllerEventHandler+UnityPoseFloatEvent, Assembly-CSharp,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    defaultParameterProperty: 
+  - id: 1
+    label: Horizontal
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+      label: 
+      poseValue: {fileID: 0}
+      stringValue: 
+      poseFloatEvent:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: Passer.ControllerEventHandler+UnityPoseFloatEvent, Assembly-CSharp,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    defaultParameterProperty: 
+  - id: 2
+    label: Stick Button
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+      label: 
+      poseValue: {fileID: 0}
+      stringValue: 
+      poseFloatEvent:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: Passer.ControllerEventHandler+UnityPoseFloatEvent, Assembly-CSharp,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    defaultParameterProperty: 
+  - id: 3
+    label: Button 1
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 1
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 1523173821326922}
+        methodName: Socket/Release
+        parameters:
+        - fromEvent: 1
+          localProperty: 
+          type: 0
+          floatConstant: 0
+          intConstant: 0
+          boolConstant: 0
+          stringConstant: 
+          vector3Constant: {x: 0, y: 0, z: 0}
+          gameObjectConstant: {fileID: 0}
+          rigidbodyConstant: {fileID: 0}
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+      label: 
+      poseValue: {fileID: 0}
+      stringValue: 
+      poseFloatEvent:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: Passer.ControllerEventHandler+UnityPoseFloatEvent, Assembly-CSharp,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+      label: 
+      poseValue: {fileID: 0}
+      stringValue: 
+      poseFloatEvent:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: Passer.ControllerEventHandler+UnityPoseFloatEvent, Assembly-CSharp,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    defaultParameterProperty: 
+  - id: 4
+    label: Button 2
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+      label: 
+      poseValue: {fileID: 0}
+      stringValue: 
+      poseFloatEvent:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: Passer.ControllerEventHandler+UnityPoseFloatEvent, Assembly-CSharp,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    defaultParameterProperty: 
+  - id: 5
+    label: Button 3
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+      label: 
+      poseValue: {fileID: 0}
+      stringValue: 
+      poseFloatEvent:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: Passer.ControllerEventHandler+UnityPoseFloatEvent, Assembly-CSharp,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    defaultParameterProperty: 
+  - id: 6
+    label: Button 4
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+      label: 
+      poseValue: {fileID: 0}
+      stringValue: 
+      poseFloatEvent:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: Passer.ControllerEventHandler+UnityPoseFloatEvent, Assembly-CSharp,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    defaultParameterProperty: 
+  - id: 7
+    label: Trigger 1
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 1
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 1886339611299816}
+        methodName: Script/Shoot
+        parameters:
+        - fromEvent: 1
+          localProperty: 
+          type: 0
+          floatConstant: 0
+          intConstant: 0
+          boolConstant: 0
+          stringConstant: 
+          vector3Constant: {x: 0, y: 0, z: 0}
+          gameObjectConstant: {fileID: 0}
+          rigidbodyConstant: {fileID: 0}
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+      label: 
+      poseValue: {fileID: 0}
+      stringValue: 
+      poseFloatEvent:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: Passer.ControllerEventHandler+UnityPoseFloatEvent, Assembly-CSharp,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 1886339611299816}
+        methodName: Script/Shoot
+        parameters:
+        - fromEvent: 1
+          localProperty: 
+          type: 0
+          floatConstant: 0
+          intConstant: 0
+          boolConstant: 0
+          stringConstant: 
+          vector3Constant: {x: 0, y: 0, z: 0}
+          gameObjectConstant: {fileID: 0}
+          rigidbodyConstant: {fileID: 0}
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+      label: 
+      poseValue: {fileID: 0}
+      stringValue: 
+      poseFloatEvent:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: Passer.ControllerEventHandler+UnityPoseFloatEvent, Assembly-CSharp,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    defaultParameterProperty: 
+  - id: 8
+    label: Trigger 2
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+      label: 
+      poseValue: {fileID: 0}
+      stringValue: 
+      poseFloatEvent:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: Passer.ControllerEventHandler+UnityPoseFloatEvent, Assembly-CSharp,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    defaultParameterProperty: 
+  - id: 9
+    label: Option
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Press
+    - On Release
+    - While Down
+    - While Up
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+      floatParameter: 0
+      floatTriggerLow: 0.2
+      floatTriggerHigh: 0.8
+      multiplicationFactor: 1
+      intTriggerLow: 0
+      intTriggerHigh: 1
+      label: 
+      poseValue: {fileID: 0}
+      stringValue: 
+      poseFloatEvent:
+        m_PersistentCalls:
+          m_Calls: []
+        m_TypeName: Passer.ControllerEventHandler+UnityPoseFloatEvent, Assembly-CSharp,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    defaultParameterProperty: 
+  socket: {fileID: 0}
+  hand: 0
+  pose: {fileID: 0}
+  handTarget: {fileID: 0}
+  isHeld: 0
+  grabbedEvent:
+    id: 0
+    label: Grab Event
+    tooltip: 'Call functions using the grabbing status\nParameter: the grabbed object'
+    eventTypeLabels:
+    - Nothing
+    - On Grab Start
+    - On Let Go
+    - While Holding
+    - While Not Holding
+    - On Grab Change
+    - Always
+    fromEventLabel: socket.gameObject
+    events:
+    - eventType: 5
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 1014415379911186}
+        methodName: InteractionPointer/Activation
+        parameters:
+        - fromEvent: 1
+          localProperty: From Event
+          type: 3
+          floatConstant: 0
+          intConstant: 0
+          boolConstant: 1
+          stringConstant: 
+          vector3Constant: {x: 0, y: 0, z: 0}
+          gameObjectConstant: {fileID: 0}
+          rigidbodyConstant: {fileID: 0}
+      boolInverse: 0
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+--- !u!114 &114434915744402832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1014415379911186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa00f2ba726a3e4bb5b4277991f5ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  timedClick: 0
+  focusPointObj: {fileID: 1607751933130066}
+  objectInFocus: {fileID: 0}
+  rayType: 0
+  maxDistance: 10
+  resolution: 0.2
+  speed: 3
+  radius: 0.1
+  focusEvent:
+    id: 0
+    label: Focus Event
+    tooltip: 'Call functions using the current focus
+
+      Parameter: the Object in Focus'
+    eventTypeLabels: []
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+  focusPointEvent:
+    id: 1
+    label: Focus Point Event
+    tooltip: 'Call functions using the current focus point
+
+      Parameter: the position of the focus point'
+    eventTypeLabels: []
+    fromEventLabel: 
+    events:
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+  clickEvent:
+    id: 2
+    label: Click Event
+    tooltip: 'Call functions using the clicking status
+
+      Parameter: the Object in Focus when clicking'
+    eventTypeLabels: []
+    fromEventLabel: 
+    events:
+    - eventType: 1
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 1014415379911186}
+        methodName: InteractionPointer/ApplyForce
+        parameters:
+        - fromEvent: 0
+          localProperty: Constant
+          type: 1
+          floatConstant: 500
+          intConstant: 0
+          boolConstant: 0
+          stringConstant: 
+          vector3Constant: {x: 0, y: 0, z: 0}
+          gameObjectConstant: {fileID: 0}
+          rigidbodyConstant: {fileID: 0}
+      boolInverse: 0
+    - eventType: 0
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+  activeEvent:
+    eventType: 5
+    eventNetworking: 0
+    functionCall:
+      targetGameObject: {fileID: 0}
+      methodName: 
+      parameters: []
+    boolInverse: 0
+--- !u!114 &114493821478521018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1523173821326922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 420729d57aa3e734982a265b400401d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachedPrefab: {fileID: 0}
+  attachedTransform: {fileID: 0}
+  attachedHandle: {fileID: 0}
+  socketTag: 
+  destroyOnLoad: 0
+  attachMethod: 0
+  attachEvent:
+    id: 0
+    label: Hold Event
+    tooltip: 'Call functions using what the socket is holding
+
+      Parameter: the GameObject held by the socket'
+    eventTypeLabels: []
+    fromEventLabel: 
+    events:
+    - eventType: 5
+      eventNetworking: 0
+      functionCall:
+        targetGameObject: {fileID: 0}
+        methodName: 
+        parameters: []
+      boolInverse: 0
+--- !u!114 &114496071672631398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1338508042946736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1b14a03b411004bb24d9d0dee33431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 4001617637216370}
+  limitX: 1
+  limitY: 1
+  limitZ: 1
+  basePosition: {x: 0, y: 0, z: 0}
+  minLocalPosition: {x: 0, y: 0, z: -0.05}
+  maxLocalPosition: {x: 0, y: 0, z: 0}
+  baseRotation: {x: 0, y: 0, z: 0, w: 1}
+  limitAngle: 1
+  minLocalAngle: 0
+  maxLocalAngle: 0
+  limitAngleAxis: {x: 0, y: 1, z: 0}
+  rotationMethod: 0
+  gameObjectEvent:
+    id: 0
+    label: GameObject Event
+    tooltip: Call functions based on the GameObject life cycle
+    eventTypeLabels:
+    - Never
+    - Start
+    - On Destroy
+    - Update
+    - ' '
+    - ' '
+    - ' '
+    fromEventLabel: 
+    events: []
+  xSliderEvents:
+    id: 1
+    label: X Axis
+    tooltip: 'Call function using the X axis range value
+
+      Parameter: the range along the X axis (-1..1)'
+    eventTypeLabels:
+    - Never
+    - On Min
+    - On Max
+    - While Min
+    - While Max
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+  ySliderEvents:
+    id: 2
+    label: Y Axis
+    tooltip: 'Call function using the Y axis range value
+
+      Parameter: the range along the Y axis (-1..1)'
+    eventTypeLabels:
+    - Never
+    - On Min
+    - On Max
+    - While Min
+    - While Max
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+  zSliderEvents:
+    id: 3
+    label: Z Axis
+    tooltip: 'Call function using the Z axis range value
+
+      Parameter: the range along the Z axis (-1..1)'
+    eventTypeLabels:
+    - Never
+    - On Min
+    - On Max
+    - While Min
+    - While Max
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+  angleEvents:
+    id: 4
+    label: Angle
+    tooltip: 
+    eventTypeLabels:
+    - Never
+    - On Min
+    - On Max
+    - While Min
+    - While Max
+    - On Change
+    - Continuous
+    fromEventLabel: 
+    events: []
+--- !u!114 &114645475296206984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886339611299816}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5108aae91352c042b4ccef54b577401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptName: Shoot
+  conditions:
+  - targetGameObject: {fileID: 1523173821326922}
+    fullPropertyName: Socket/isOccupied
+    propertyType: 1
+    operandIndex: 1
+    intConstant: 0
+    floatConstant: 0
+  functionCalls:
+  - targetGameObject: {fileID: 1733005783856408}
+    methodName: FlashLight/Flash
+    parameters:
+    - fromEvent: 1
+      localProperty: 
+      type: 0
+      floatConstant: 0
+      intConstant: 0
+      boolConstant: 0
+      stringConstant: 
+      vector3Constant: {x: 0, y: 0, z: 0}
+      gameObjectConstant: {fileID: 0}
+      rigidbodyConstant: {fileID: 0}
+  - targetGameObject: {fileID: 1436898006324960}
+    methodName: AudioSource/Play
+    parameters:
+    - fromEvent: 1
+      localProperty: 
+      type: 0
+      floatConstant: 0
+      intConstant: 0
+      boolConstant: 0
+      stringConstant: 
+      vector3Constant: {x: 0, y: 0, z: 0}
+      gameObjectConstant: {fileID: 0}
+      rigidbodyConstant: {fileID: 0}
+  - targetGameObject: {fileID: 1014415379911186}
+    methodName: InteractionPointer/Click
+    parameters:
+    - fromEvent: 1
+      localProperty: 
+      type: 0
+      floatConstant: 0
+      intConstant: 0
+      boolConstant: 0
+      stringConstant: 
+      vector3Constant: {x: 0, y: 0, z: 0}
+      gameObjectConstant: {fileID: 0}
+      rigidbodyConstant: {fileID: 0}
+--- !u!136 &136321194670036630
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1836659987641172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!212 &212587847783174698
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1623586009004810}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: c7b95231ffa1bc34ba2eaea4d799ed30, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+--- !u!212 &212856850563888546
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1607751933130066}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: c7b95231ffa1bc34ba2eaea4d799ed30, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0

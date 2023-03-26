@@ -1,0 +1,201 @@
+{
+	"app_key": "application.generated.unity.steamvr.exe",
+	"bindings": {
+		"/actions/default": {
+			"chords": [],
+			"haptics": [
+				{
+					"output": "/actions/default/out/lefthaptic",
+					"path": "/user/hand/left/output/haptic"
+				},
+				{
+					"output": "/actions/default/out/righthaptic",
+					"path": "/user/hand/right/output/haptic"
+				}
+			],
+			"poses": [
+				{
+					"output": "/actions/default/in/pose",
+					"path": "/user/hand/left/pose/raw"
+				},
+				{
+					"output": "/actions/default/in/pose",
+					"path": "/user/hand/right/pose/raw"
+				}
+			],
+			"skeleton": [
+				{
+					"output": "/actions/default/in/skeletonlefthand",
+					"path": "/user/hand/left/input/skeleton/left"
+				},
+				{
+					"output": "/actions/default/in/skeletonrighthand",
+					"path": "/user/hand/right/input/skeleton/right"
+				}
+			],
+			"sources": [
+				// ----- Left
+
+				{
+					"inputs": {
+						"touch": {
+							"output": "/actions/default/in/LeftJoystickTouch"
+						},
+						"click": {
+							"output": "/actions/default/in/LeftJoystickPress"
+						},
+						"position": {
+							"output": "/actions/default/in/LeftJoystick"
+						}
+					},
+					"mode": "joystick",
+					"path": "/user/hand/left/input/joystick"
+				},
+
+				{
+					"inputs": {
+						"pull": {
+							"output": "/actions/default/in/LeftTrigger"
+						}
+					},
+					"mode": "trigger",
+					"path": "/user/hand/left/input/trigger"
+				},
+				{
+					"inputs": {
+						"touch": {
+							"output": "/actions/default/in/LeftTriggerTouch"
+						}
+					},
+					"mode": "button",
+					"path": "/user/hand/left/input/trigger"
+				},
+
+				{
+					"path": "/user/hand/left/input/grip",
+					"mode": "trigger",
+					"inputs": {
+						"pull": {
+							"output": "/actions/default/in/LeftGrip"
+						}
+					}
+				},
+				{
+					"inputs": {
+						"touch": {
+							"output": "/actions/default/in/LeftGripTouch"
+						}
+					},
+					"mode": "button",
+					"path": "/user/hand/left/input/grip"
+				},
+
+				{
+					"inputs": {
+						"touch": {
+							"output": "/actions/default/in/LeftButtonATouch"
+						},
+						"click": {
+							"output": "/actions/default/in/LeftButtonA"
+						}
+					},
+					"mode": "button",
+					"path": "/user/hand/left/input/x"
+				},
+				{
+					"inputs": {
+						"touch": {
+							"output": "/actions/default/in/LeftButtonBTouch"
+						},
+						"click": {
+							"output": "/actions/default/in/LeftButtonB"
+						}
+					},
+					"mode": "button",
+					"path": "/user/hand/left/input/y"
+				},
+
+				// ----- Right
+
+				{
+					"inputs": {
+						"touch": {
+							"output": "/actions/default/in/RightJoystickTouch"
+						},
+						"click": {
+							"output": "/actions/default/in/RightJoystickPress"
+						},
+						"position": {
+							"output": "/actions/default/in/RightJoystick"
+						}
+					},
+					"mode": "joystick",
+					"path": "/user/hand/right/input/joystick"
+				},
+
+				{
+					"inputs": {
+						"touch": {
+							"output": "/actions/default/in/RightTriggerTouch"
+						},
+						"pull": {
+							"output": "/actions/default/in/RightTrigger"
+						}
+					},
+					"mode": "trigger",
+					"path": "/user/hand/right/input/trigger"
+				},
+
+				{
+					"inputs": {
+						"touch": {
+							"output": "/actions/default/in/RightGripTouch"
+						},
+						"pull": {
+							"output": "/actions/default/in/RightGrip"
+						}
+					},
+					"mode": "trigger",
+					"path": "/user/hand/right/input/grip"
+				},
+				{
+					"inputs": {
+						"touch": {
+							"output": "/actions/default/in/RightGripTouch"
+						}
+					},
+					"mode": "trigger",
+					"path": "/user/hand/right/input/grip"
+				},
+
+				{
+					"inputs": {
+						"touch": {
+							"output": "/actions/default/in/RightButtonATouch"
+						},
+						"click": {
+							"output": "/actions/default/in/RightButtonA"
+						}
+					},
+					"mode": "button",
+					"path": "/user/hand/right/input/a"
+				},
+				{
+					"inputs": {
+						"touch": {
+							"output": "/actions/default/in/RightButtonBTouch"
+						},
+						"click": {
+							"output": "/actions/default/in/RightButtonB"
+						}
+					},
+					"mode": "button",
+					"path": "/user/hand/right/input/b"
+				}
+			]
+		}
+	},
+	"controller_type": "oculus_touch",
+	"description": "",
+	"name": "oculus_touch"
+}

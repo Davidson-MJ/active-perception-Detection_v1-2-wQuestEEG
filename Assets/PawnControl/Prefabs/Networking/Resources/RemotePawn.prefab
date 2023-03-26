@@ -1,0 +1,234 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1528034616966532}
+  m_IsPrefabParent: 1
+--- !u!1 &1528034616966532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4159156571416462}
+  - component: {fileID: 114944307802067210}
+  m_Layer: 0
+  m_Name: RemotePawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1544794707742666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4129572215111912}
+  - component: {fileID: 114358682961201236}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1588402235595884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4641483265713082}
+  - component: {fileID: 114378059919975028}
+  m_Layer: 0
+  m_Name: Right Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1673654246265704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4856041109440752}
+  - component: {fileID: 114244283609105186}
+  m_Layer: 0
+  m_Name: Left Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4129572215111912
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1544794707742666}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4159156571416462}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4159156571416462
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1528034616966532}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4856041109440752}
+  - {fileID: 4641483265713082}
+  - {fileID: 4129572215111912}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4641483265713082
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1588402235595884}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.55, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4159156571416462}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4856041109440752
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1673654246265704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.55, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4159156571416462}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114244283609105186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1673654246265704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ddd72ff0687ab45bc0de51ab4c91cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showRealObjects: 1
+  pawn: {fileID: 114944307802067210}
+  side: 1
+  twoHandedGrab: 0
+  outward: {x: -1, y: 0, z: 0}
+  unity: {fileID: 0}
+  physics: 0
+  grabSocket: {fileID: 0}
+  touchedObject: {fileID: 0}
+  grabbedObject: {fileID: 0}
+  grabbedRigidbody: 0
+--- !u!114 &114358682961201236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1544794707742666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee107ef9ea64514d97ed9a47746d2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showRealObjects: 1
+  pawn: {fileID: 114944307802067210}
+  unity: {fileID: 0}
+  neck2eyes: {x: 0, y: 0, z: 0}
+--- !u!114 &114378059919975028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1588402235595884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ddd72ff0687ab45bc0de51ab4c91cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showRealObjects: 1
+  pawn: {fileID: 114944307802067210}
+  side: 2
+  twoHandedGrab: 0
+  outward: {x: 1, y: 0, z: 0}
+  unity: {fileID: 0}
+  physics: 0
+  grabSocket: {fileID: 0}
+  touchedObject: {fileID: 0}
+  grabbedObject: {fileID: 0}
+  grabbedRigidbody: 0
+--- !u!114 &114944307802067210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1528034616966532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1301d791373b7734ca8ae599d82b0d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showRealObjects: 0
+  physics: 1
+  useGravity: 1
+  stepOffset: 0.3
+  bodyPull: 0
+  proximitySpeed: 0
+  proximitySpeedRate: 0.8
+  startPosition: 0
+  avatarMatching: 1
+  calibrateAtStart: 0
+  dontDestroyOnLoad: 0
+  disconnectInstances: 0
+  gameController: 0
+  _headTarget: {fileID: 0}
+  _leftHandTarget: {fileID: 0}
+  _rightHandTarget: {fileID: 0}
+  unityTracker:
+    enabled: 0
+    status: 0
+    trackerTransform: {fileID: 0}
+  forwardSpeed: 1
+  backwardSpeed: 0.6
+  sidewardSpeed: 1
+  maxAcceleration: 1
+  rotationSpeed: 60
+  velocity: {x: 0, y: 0, z: 0}
+  ground: {fileID: 0}
+  groundVelocity: {x: 0, y: 0, z: 0}
+  groundAngularVelocity: 0
+  isRemote: 1
+  nwId: 0
+  id: -1
